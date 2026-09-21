@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generator listu referencyjnego (rekomendacji) — PDF</title>
+<meta name="description" content="Darmowy generator listu referencyjnego dla byłego pracownika. Wypełnij formularz i pobierz gotową rekomendację w PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap bar">
+  <a href="../index.html" class="brand"><span class="mark">G</span>Generator dokumentów</a>
+  <nav class="nav-links"><a href="../index.html#dokumenty">Wszystkie dokumenty</a><a href="../index.html#faq">FAQ</a></nav>
+  <a href="../index.html#dokumenty" class="nav-cta">Inne generatory</a>
+</div></header>
+
+<div class="wrap crumbs"><a href="../index.html">Strona główna</a><span>/</span><a href="../index.html#dokumenty">Dokumenty</a><span>/</span>List referencyjny</div>
+
+<div class="wrap gen-head">
+  <span class="tag">Kariera</span>
+  <h1>Generator listu referencyjnego</h1>
+  <p>Rekomendacja pracodawcy dla byłego pracownika — profesjonalny wzór gotowy w kilka minut.</p>
+</div>
+
+<div class="wrap gen-layout">
+  <div class="panel">
+    <h2>Wystawiający referencje</h2>
+    <div class="field"><label>Imię i nazwisko, stanowisko</label><input id="f-sname" value="Anna Kowalska, Dyrektor HR"></div>
+    <div class="field"><label>Dane firmy</label><textarea id="f-saddr">Firma XYZ Sp. z o.o.
+ul. Biznesowa 5
+00-456 Warszawa</textarea></div>
+    <div class="field"><label>Miejscowość i data</label><input id="f-date" value=""></div>
+
+    <h2 style="margin-top:22px">Pracownik</h2>
+    <div class="field-row">
+      <div class="field"><label>Imię i nazwisko</label><input id="f-emp" value="Jan Nowak"></div>
+      <div class="field"><label>Stanowisko</label><input id="f-role" value="Specjalista ds. Sprzedaży"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>Okres zatrudnienia od</label><input id="f-from" value="03.2021"></div>
+      <div class="field"><label>Okres zatrudnienia do</label><input id="f-to" value="02.2026"></div>
+    </div>
+    <div class="field"><label>Opis osiągnięć i cech</label><textarea id="f-desc" style="min-height:140px">wykazywał się wysokim zaangażowaniem, samodzielnością oraz doskonałymi umiejętnościami komunikacji z klientami. W tym czasie zwiększył sprzedaż w swoim regionie o 27%. Polecam go jako rzetelnego i sumiennego pracownika.</textarea></div>
+
+    <button class="btn-primary" id="downloadBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+      Pobierz jako PDF
+    </button>
+    <div class="disclaimer">Referencje warto wystawiać na papierze firmowym z pieczątką — tutaj przygotujesz treść bazową.</div>
+  </div>
+
+  <div class="preview-wrap">
+    <div class="preview-toolbar"><span class="lbl">Podgląd na żywo</span><div class="zoom-controls"><button type="button" data-zoom="-1">−</button><button type="button" data-zoom="1">+</button></div></div>
+    <div class="preview-stage">
+      <div class="paper-doc letter-doc" id="paper" style="transform:scale(.62)">
+        <div class="sender" id="p-sender"></div>
+        <div class="date" id="p-date"></div>
+        <div class="subject" style="margin-top:30px">LIST REFERENCYJNY</div>
+        <div class="body-text" id="p-body"></div>
+        <div class="sign-block"><div class="sign-line" id="p-signname"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer"></footer>
+
+<script src="../assets/js/common.js"></script>
+<script>
+document.getElementById('f-date').value = 'Warszawa, ' + todayPL();
+function render(){
+  const g = id => document.getElementById(id).value;
+  document.getElementById('p-sender').textContent = g('f-sname') + '\n' + g('f-saddr');
+  document.getElementById('p-date').textContent = g('f-date');
+  document.getElementById('p-body').textContent = `Niniejszym potwierdzam, że Pan/Pani ${g('f-emp')} był/a zatrudniony/a w naszej firmie na stanowisku ${g('f-role')} w okresie od ${g('f-from')} do ${g('f-to')}.
+
+W tym czasie ${g('f-desc')}`;
+  document.getElementById('p-signname').textContent = g('f-sname');
+}
+document.body.addEventListener('input', render);
+render();
+initZoom('paper');
+initDownload('downloadBtn', 'List_referencyjny');
+</script>
+</body>
+</html>

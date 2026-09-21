@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zgoda na zabieg medyczny dziecka — generator PDF</title>
+<meta name="description" content="Darmowy generator zgody rodzica na zabieg lub badanie medyczne dziecka pod opieką osoby trzeciej. Wypełnij formularz i pobierz gotowy PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap bar">
+  <a href="../index.html" class="brand"><span class="mark">G</span>Generator dokumentów</a>
+  <nav class="nav-links"><a href="../index.html#dokumenty">Wszystkie dokumenty</a><a href="../index.html#faq">FAQ</a></nav>
+  <a href="../index.html#dokumenty" class="nav-cta">Inne generatory</a>
+</div></header>
+
+<div class="wrap crumbs"><a href="../index.html">Strona główna</a><span>/</span><a href="../index.html#dokumenty">Dokumenty</a><span>/</span>Zgoda na zabieg dziecka</div>
+
+<div class="wrap gen-head">
+  <span class="tag">Pisma formalne</span>
+  <h1>Upoważnienie do opieki medycznej nad dzieckiem</h1>
+  <p>Zgoda rodzica upoważniająca wskazaną osobę do podejmowania decyzji medycznych w nagłych przypadkach pod jej opieką.</p>
+</div>
+
+<div class="wrap gen-layout">
+  <div class="panel">
+    <h2>Rodzic / opiekun</h2>
+    <div class="field"><label>Imię i nazwisko</label><input id="f-sname" value="Anna Nowak"></div>
+    <div class="field-row">
+      <div class="field"><label>Adres zamieszkania</label><input id="f-saddr" value="ul. Leśna 8/2, 02-200 Warszawa"></div>
+      <div class="field"><label>Telefon kontaktowy</label><input id="f-phone" value="500 100 200"></div>
+    </div>
+
+    <h2 style="margin-top:22px">Dziecko</h2>
+    <div class="field-row">
+      <div class="field"><label>Imię i nazwisko dziecka</label><input id="f-child" value="Kacper Nowak"></div>
+      <div class="field"><label>Data urodzenia</label><input id="f-childdob" value="10.05.2015"></div>
+    </div>
+
+    <h2 style="margin-top:22px">Osoba sprawująca opiekę</h2>
+    <div class="field"><label>Imię i nazwisko opiekuna czasowego</label><input id="f-guardian" value="Ewa Kowalska (wychowawca, Szkoła Podstawowa nr 12)"></div>
+    <div class="field"><label>Miejscowość i data</label><input id="f-date" value=""></div>
+    <div class="field"><label>Okoliczności (np. wycieczka, obóz, zajęcia)</label><input id="f-context" value="wyjazd na Zieloną Szkołę w terminie 12–16.06.2026"></div>
+
+    <button class="btn-primary" id="downloadBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+      Pobierz jako PDF
+    </button>
+    <div class="disclaimer">Dokument nie zastępuje pełnomocnictwa notarialnego wymaganego przy niektórych procedurach medycznych — w razie wątpliwości skonsultuj się z placówką medyczną.</div>
+  </div>
+
+  <div class="preview-wrap">
+    <div class="preview-toolbar"><span class="lbl">Podgląd na żywo</span><div class="zoom-controls"><button type="button" data-zoom="-1">−</button><button type="button" data-zoom="1">+</button></div></div>
+    <div class="preview-stage">
+      <div class="paper-doc letter-doc" id="paper" style="transform:scale(.62)">
+        <div class="date" id="p-date" style="text-align:left;margin-top:0"></div>
+        <div class="subject" style="margin-top:34px">UPOWAŻNIENIE DO OPIEKI MEDYCZNEJ NAD DZIECKIEM</div>
+        <div class="body-text" id="p-body"></div>
+        <div class="sign-block"><div class="sign-line" id="p-signname"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer"><div class="wrap footer-bottom">© 2026 Generator dokumentów online. Wzory mają charakter pomocniczy i nie stanowią porady prawnej.</div></footer>
+
+<script src="../assets/js/common.js"></script>
+<script>
+document.getElementById('f-date').value = 'Warszawa, ' + todayPL();
+function render(){
+  const g = id => document.getElementById(id).value;
+  document.getElementById('p-date').textContent = g('f-date');
+  document.getElementById('p-body').textContent = `Ja, niżej podpisana/y ${g('f-sname')}, zamieszkała/y pod adresem ${g('f-saddr')}, tel. ${g('f-phone')}, jako rodzic / opiekun prawny dziecka ${g('f-child')} (data urodzenia: ${g('f-childdob')}), upoważniam ${g('f-guardian')} do podejmowania w moim imieniu niezbędnych decyzji dotyczących opieki medycznej nad dzieckiem w czasie: ${g('f-context')}, w przypadku, gdy nie będę mogła/mógł zostać niezwłocznie poinformowana/y lub stawić się osobiście.
+
+W nagłych przypadkach zagrażających życiu lub zdrowiu dziecka wyrażam zgodę na udzielenie mu niezbędnej pomocy medycznej.`;
+  document.getElementById('p-signname').textContent = g('f-sname');
+}
+document.body.addEventListener('input', render);
+render();
+initZoom('paper');
+initDownload('downloadBtn', 'Zgoda_na_opieke_medyczna');
+</script>
+</body>
+</html>

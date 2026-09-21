@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generator planu lekcji / zajęć — PDF</title>
+<meta name="description" content="Darmowy generator planu lekcji lub zajęć pozaszkolnych. Wypełnij dane i pobierz gotowy plan tygodniowy w PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap bar">
+  <a href="../index.html" class="brand"><span class="mark">G</span>Generator dokumentów</a>
+  <nav class="nav-links"><a href="../index.html#dokumenty">Wszystkie dokumenty</a><a href="../index.html#faq">FAQ</a></nav>
+  <a href="../index.html#dokumenty" class="nav-cta">Inne generatory</a>
+</div></header>
+
+<div class="wrap crumbs"><a href="../index.html">Strona główna</a><span>/</span><a href="../index.html#dokumenty">Dokumenty</a><span>/</span>Plan lekcji</div>
+
+<div class="wrap gen-head">
+  <span class="tag">Organizacja</span>
+  <h1>Generator planu lekcji</h1>
+  <p>Tygodniowy plan zajęć — dodaj przedmioty i godziny na każdy dzień tygodnia.</p>
+</div>
+
+<div class="wrap gen-layout">
+  <div class="panel">
+    <h2>Nagłówek</h2>
+    <div class="field-row">
+      <div class="field"><label>Klasa / grupa</label><input id="f-title" value="Klasa 5B"></div>
+      <div class="field"><label>Rok szkolny</label><input id="f-period" value="2025/2026"></div>
+    </div>
+
+    <h2 style="margin-top:22px">Godziny lekcyjne</h2>
+    <div id="rows"></div>
+    <button class="btn-add" id="add-row" type="button">+ Dodaj godzinę lekcyjną</button>
+
+    <button class="btn-primary" id="downloadBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+      Pobierz jako PDF
+    </button>
+    <div class="disclaimer">Zostaw pole puste, jeśli w danym dniu i godzinie nie ma zajęć.</div>
+  </div>
+
+  <div class="preview-wrap">
+    <div class="preview-toolbar"><span class="lbl">Podgląd na żywo</span><div class="zoom-controls"><button type="button" data-zoom="-1">−</button><button type="button" data-zoom="1">+</button></div></div>
+    <div class="preview-stage">
+      <div class="paper-doc table-doc" id="paper" style="transform:scale(.62);width:297mm">
+        <div class="doc-title">Plan lekcji — <span id="p-title"></span></div>
+        <div class="meta-row"><span><b>Rok szkolny:</b> <span id="p-period"></span></span></div>
+        <table>
+          <thead><tr><th style="width:70px">Godz.</th><th>Poniedziałek</th><th>Wtorek</th><th>Środa</th><th>Czwartek</th><th>Piątek</th></tr></thead>
+          <tbody id="p-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer"></footer>
+
+<style>#paper.paper-doc{width:297mm;min-height:210mm} @media print{ .paper-doc{width:297mm !important;min-height:210mm !important} @page{size:A4 landscape;margin:0} }</style>
+
+<script src="../assets/js/common.js"></script>
+<script>
+const rows = document.getElementById('rows');
+function row(h, d){
+  d = d || ['','','','',''];
+  const el = document.createElement('div');
+  el.className = 'repeat-block r-row';
+  el.innerHTML = `<button class="repeat-remove" type="button">×</button>
+    <div class="field"><label>Godzina</label><input class="r-h" value="${h||''}"></div>
+    <div class="field-row" style="grid-template-columns:repeat(5,1fr)">
+      <input class="r-d0" placeholder="Pon" value="${d[0]}"><input class="r-d1" placeholder="Wt" value="${d[1]}"><input class="r-d2" placeholder="Śr" value="${d[2]}"><input class="r-d3" placeholder="Czw" value="${d[3]}"><input class="r-d4" placeholder="Pt" value="${d[4]}">
+    </div>`;
+  return el;
+}
+rows.appendChild(row('8:00–8:45', ['Matematyka','Język polski','Biologia','Historia','WF']));
+rows.appendChild(row('8:55–9:40', ['Język polski','Matematyka','Geografia','Muzyka','Informatyka']));
+document.getElementById('add-row').addEventListener('click', ()=>{ rows.appendChild(row()); render(); });
+document.body.addEventListener('click', e=>{ if(e.target.classList.contains('repeat-remove')){ e.target.closest('.repeat-block').remove(); render(); } });
+
+function render(){
+  const g = id => document.getElementById(id).value;
+  document.getElementById('p-title').textContent = g('f-title');
+  document.getElementById('p-period').textContent = g('f-period');
+  document.getElementById('p-rows').innerHTML = [...rows.querySelectorAll('.r-row')].map(r=>{
+    const h = escapeHtml(r.querySelector('.r-h').value);
+    const days = [0,1,2,3,4].map(i=>escapeHtml(r.querySelector('.r-d'+i).value));
+    return `<tr><td><b>${h}</b></td>${days.map(x=>`<td>${x}</td>`).join('')}</tr>`;
+  }).join('');
+}
+document.body.addEventListener('input', render);
+render();
+initZoom('paper');
+initDownload('downloadBtn', 'Plan_lekcji');
+</script>
+</body>
+</html>

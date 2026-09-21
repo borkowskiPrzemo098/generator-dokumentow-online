@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generator listy obecności — drukowalny PDF</title>
+<meta name="description" content="Darmowy generator listy obecności dla firmy, szkolenia lub zajęć. Wypełnij dane uczestników i pobierz gotowy arkusz w PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap bar">
+  <a href="../index.html" class="brand"><span class="mark">G</span>Generator dokumentów</a>
+  <nav class="nav-links"><a href="../index.html#dokumenty">Wszystkie dokumenty</a><a href="../index.html#faq">FAQ</a></nav>
+  <a href="../index.html#dokumenty" class="nav-cta">Inne generatory</a>
+</div></header>
+
+<div class="wrap crumbs"><a href="../index.html">Strona główna</a><span>/</span><a href="../index.html#dokumenty">Dokumenty</a><span>/</span>Lista obecności</div>
+
+<div class="wrap gen-head">
+  <span class="tag">Organizacja</span>
+  <h1>Generator listy obecności</h1>
+  <p>Gotowy do druku arkusz obecności dla zajęć, szkolenia lub zebrania — dodaj dowolną liczbę uczestników.</p>
+</div>
+
+<div class="wrap gen-layout">
+  <div class="panel">
+    <h2>Nagłówek</h2>
+    <div class="field"><label>Tytuł listy</label><input id="f-title" value="Lista obecności — szkolenie wewnętrzne"></div>
+    <div class="field-row">
+      <div class="field"><label>Data</label><input id="f-date" value=""></div>
+      <div class="field"><label>Miejsce / grupa</label><input id="f-place" value="Sala konferencyjna A"></div>
+    </div>
+
+    <h2 style="margin-top:22px">Uczestnicy</h2>
+    <div id="rows"></div>
+    <button class="btn-add" id="add-row" type="button">+ Dodaj uczestnika</button>
+
+    <button class="btn-primary" id="downloadBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+      Pobierz jako PDF
+    </button>
+    <div class="disclaimer">Arkusz ma charakter organizacyjny — do celów formalnych sprawdź, czy Twoja instytucja wymaga własnego wzoru.</div>
+  </div>
+
+  <div class="preview-wrap">
+    <div class="preview-toolbar"><span class="lbl">Podgląd na żywo</span><div class="zoom-controls"><button type="button" data-zoom="-1">−</button><button type="button" data-zoom="1">+</button></div></div>
+    <div class="preview-stage">
+      <div class="paper-doc table-doc" id="paper" style="transform:scale(.62)">
+        <div class="doc-title" id="p-title"></div>
+        <div class="meta-row"><span><b>Data:</b> <span id="p-date"></span></span><span><b>Miejsce:</b> <span id="p-place"></span></span></div>
+        <table>
+          <thead><tr><th style="width:32px">Lp.</th><th>Imię i nazwisko</th><th>Podpis</th></tr></thead>
+          <tbody id="p-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer"></footer>
+
+<script src="../assets/js/common.js"></script>
+<script>
+document.getElementById('f-date').value = todayPL();
+const rows = document.getElementById('rows');
+function row(name){
+  const d = document.createElement('div');
+  d.className = 'repeat-block r-row';
+  d.innerHTML = `<button class="repeat-remove" type="button">×</button><div class="field"><label>Imię i nazwisko</label><input class="r-name" value="${name||''}"></div>`;
+  return d;
+}
+['Anna Kowalska','Jan Nowak','Piotr Wiśniewski','Katarzyna Wójcik'].forEach(n=>rows.appendChild(row(n)));
+document.getElementById('add-row').addEventListener('click', ()=>{ rows.appendChild(row()); render(); });
+document.body.addEventListener('click', e=>{ if(e.target.classList.contains('repeat-remove')){ e.target.closest('.repeat-block').remove(); render(); } });
+
+function render(){
+  const g = id => document.getElementById(id).value;
+  document.getElementById('p-title').textContent = g('f-title');
+  document.getElementById('p-date').textContent = g('f-date');
+  document.getElementById('p-place').textContent = g('f-place');
+  document.getElementById('p-rows').innerHTML = [...rows.querySelectorAll('.r-row')].map((r,i)=>
+    `<tr><td>${i+1}</td><td>${escapeHtml(r.querySelector('.r-name').value)}</td><td></td></tr>`
+  ).join('');
+}
+document.body.addEventListener('input', render);
+render();
+initZoom('paper');
+initDownload('downloadBtn', 'Lista_obecnosci');
+</script>
+</body>
+</html>

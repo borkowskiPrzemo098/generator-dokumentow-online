@@ -33,7 +33,17 @@
 
 <div class="wrap gen-layout">
   <div class="panel">
-    <h2>Dane firmowe</h2>
+    <h2>Kolorystyka wizytówki</h2>
+    <div class="swatch-row" id="theme-picker">
+      <span class="swatch active" data-color="#16342c" style="background:#16342c"></span>
+      <span class="swatch" data-color="#1f3a5f" style="background:#1f3a5f"></span>
+      <span class="swatch" data-color="#5c2a3a" style="background:#5c2a3a"></span>
+      <span class="swatch" data-color="#7a5c1f" style="background:#7a5c1f"></span>
+      <span class="swatch" data-color="#3a3a3a" style="background:#3a3a3a"></span>
+      <span class="swatch" data-color="#2f5c4a" style="background:#2f5c4a"></span>
+    </div>
+
+    <h2 style="margin-top:22px">Dane firmowe</h2>
     <div class="field"><label>Inicjał / logo (1–2 litery)</label><input id="f-mark" value="AK" maxlength="2"></div>
     <div class="field"><label>Nazwa firmy</label><input id="f-company" value="Kowalska Studio"></div>
     <div class="field"><label>Slogan / branża</label><input id="f-tag" value="Projektowanie graficzne i marka"></div>
@@ -105,6 +115,7 @@ function render(){
 document.body.addEventListener('input', render);
 render();
 initZoom('paper');
+initThemePicker('theme-picker', '--biz-accent', 'paper');
 initDownload('downloadBtn', 'Wizytowka');
 </script>
 </body>

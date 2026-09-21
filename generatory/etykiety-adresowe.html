@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generator etykiet adresowych do przesyłek — PDF</title>
+<meta name="description" content="Darmowy generator etykiet adresowych na przesyłki i paczki. Wypełnij dane nadawcy i odbiorców, pobierz arkusz w PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap bar">
+  <a href="../index.html" class="brand"><span class="mark">G</span>Generator dokumentów</a>
+  <nav class="nav-links"><a href="../index.html#dokumenty">Wszystkie dokumenty</a><a href="../index.html#faq">FAQ</a></nav>
+  <a href="../index.html#dokumenty" class="nav-cta">Inne generatory</a>
+</div></header>
+
+<div class="wrap crumbs"><a href="../index.html">Strona główna</a><span>/</span><a href="../index.html#dokumenty">Dokumenty</a><span>/</span>Etykiety adresowe</div>
+
+<div class="wrap gen-head">
+  <span class="tag">Wizerunek firmy</span>
+  <h1>Generator etykiet adresowych</h1>
+  <p>Arkusz A4 z etykietami adresowymi do wycięcia i naklejenia na przesyłki — jeden nadawca, wielu odbiorców.</p>
+</div>
+
+<div class="wrap gen-layout">
+  <div class="panel">
+    <h2>Nadawca (na każdej etykiecie)</h2>
+    <div class="field"><textarea id="f-sender">Kowalska Studio Sp. z o.o.
+ul. Kwiatowa 12
+00-123 Warszawa</textarea></div>
+
+    <h2 style="margin-top:22px">Odbiorcy (jeden na linię, adres oddziel „|”)</h2>
+    <div class="field"><textarea id="f-recipients" style="min-height:220px">Jan Nowak | ul. Leśna 8/2, 02-200 Warszawa
+Anna Wiśniewska | ul. Polna 4, 30-001 Kraków
+Piotr Kowalczyk | ul. Długa 15, 80-100 Gdańsk
+Firma ABC Sp. z o.o. | ul. Handlowa 10, 00-900 Warszawa
+Katarzyna Zielińska | ul. Krótka 2, 50-001 Wrocław
+Marek Jankowski | ul. Ogrodowa 7, 61-001 Poznań</textarea></div>
+
+    <button class="btn-primary" id="downloadBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+      Pobierz jako PDF
+    </button>
+    <div class="disclaimer">Arkusz zawiera 3 kolumny etykiet — po wydruku wytnij wzdłuż przerywanych linii.</div>
+  </div>
+
+  <div class="preview-wrap">
+    <div class="preview-toolbar"><span class="lbl">Podgląd na żywo</span><div class="zoom-controls"><button type="button" data-zoom="-1">−</button><button type="button" data-zoom="1">+</button></div></div>
+    <div class="preview-stage">
+      <div class="paper-doc labels-doc" id="paper" style="transform:scale(.62)"></div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer"></footer>
+
+<script src="../assets/js/common.js"></script>
+<script>
+function render(){
+  const sender = document.getElementById('f-sender').value;
+  const lines = document.getElementById('f-recipients').value.split('\n').map(s=>s.trim()).filter(Boolean);
+  document.getElementById('paper').innerHTML = lines.map(line=>{
+    const [name, addr] = line.split('|').map(s=>(s||'').trim());
+    return `<div class="label-cell"><b>${escapeHtml(name||'')}</b>${escapeHtml(addr||'')}<hr style="margin:8px 0;border:none;border-top:1px dashed var(--border)"><span style="color:var(--ink-faint);font-size:10px;white-space:pre-line">Nadawca:\n${escapeHtml(sender)}</span></div>`;
+  }).join('');
+}
+document.body.addEventListener('input', render);
+render();
+initZoom('paper');
+initDownload('downloadBtn', 'Etykiety_adresowe');
+</script>
+</body>
+</html>

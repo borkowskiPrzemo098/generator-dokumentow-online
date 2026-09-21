@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generator grafiku pracy / harmonogramu dyżurów — PDF</title>
+<meta name="description" content="Darmowy generator grafiku pracy i harmonogramu dyżurów dla zespołu. Wypełnij dane i pobierz gotowy grafik w PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap bar">
+  <a href="../index.html" class="brand"><span class="mark">G</span>Generator dokumentów</a>
+  <nav class="nav-links"><a href="../index.html#dokumenty">Wszystkie dokumenty</a><a href="../index.html#faq">FAQ</a></nav>
+  <a href="../index.html#dokumenty" class="nav-cta">Inne generatory</a>
+</div></header>
+
+<div class="wrap crumbs"><a href="../index.html">Strona główna</a><span>/</span><a href="../index.html#dokumenty">Dokumenty</a><span>/</span>Grafik pracy</div>
+
+<div class="wrap gen-head">
+  <span class="tag">Organizacja</span>
+  <h1>Generator grafiku pracy</h1>
+  <p>Tygodniowy harmonogram dyżurów dla zespołu — dodaj pracowników i godziny pracy na każdy dzień.</p>
+</div>
+
+<div class="wrap gen-layout">
+  <div class="panel">
+    <h2>Nagłówek</h2>
+    <div class="field-row">
+      <div class="field"><label>Tydzień / okres</label><input id="f-period" value="17.03 — 23.03.2026"></div>
+      <div class="field"><label>Dział / lokalizacja</label><input id="f-place" value="Sklep — ul. Główna 1"></div>
+    </div>
+
+    <h2 style="margin-top:22px">Pracownicy i godziny</h2>
+    <div id="rows"></div>
+    <button class="btn-add" id="add-row" type="button">+ Dodaj pracownika</button>
+
+    <button class="btn-primary" id="downloadBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+      Pobierz jako PDF
+    </button>
+    <div class="disclaimer">Wpisz godziny pracy lub „W” dla dnia wolnego w każdej kolumnie dnia tygodnia.</div>
+  </div>
+
+  <div class="preview-wrap">
+    <div class="preview-toolbar"><span class="lbl">Podgląd na żywo</span><div class="zoom-controls"><button type="button" data-zoom="-1">−</button><button type="button" data-zoom="1">+</button></div></div>
+    <div class="preview-stage">
+      <div class="paper-doc table-doc" id="paper" style="transform:scale(.62);width:297mm">
+        <div class="doc-title">Grafik pracy</div>
+        <div class="meta-row"><span><b>Okres:</b> <span id="p-period"></span></span><span><b>Lokalizacja:</b> <span id="p-place"></span></span></div>
+        <table>
+          <thead><tr><th>Pracownik</th><th>Pon</th><th>Wt</th><th>Śr</th><th>Czw</th><th>Pt</th><th>Sob</th><th>Ndz</th></tr></thead>
+          <tbody id="p-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer"></footer>
+
+<style>#paper.paper-doc{width:297mm;min-height:210mm} @media print{ .paper-doc{width:297mm !important;min-height:210mm !important} @page{size:A4 landscape;margin:0} }</style>
+
+<script src="../assets/js/common.js"></script>
+<script>
+const rows = document.getElementById('rows');
+function row(name, d){
+  d = d || ['8-16','8-16','8-16','8-16','8-16','W','W'];
+  const el = document.createElement('div');
+  el.className = 'repeat-block r-row';
+  el.innerHTML = `<button class="repeat-remove" type="button">×</button>
+    <div class="field"><label>Pracownik</label><input class="r-name" value="${name||''}"></div>
+    <div class="field-row" style="grid-template-columns:repeat(4,1fr)">
+      <input class="r-d0" value="${d[0]}"><input class="r-d1" value="${d[1]}"><input class="r-d2" value="${d[2]}"><input class="r-d3" value="${d[3]}">
+    </div>
+    <div class="field-row" style="grid-template-columns:repeat(3,1fr);margin-top:8px">
+      <input class="r-d4" value="${d[4]}"><input class="r-d5" value="${d[5]}"><input class="r-d6" value="${d[6]}">
+    </div>`;
+  return el;
+}
+rows.appendChild(row('Anna Kowalska'));
+rows.appendChild(row('Jan Nowak', ['W','8-16','8-16','8-16','8-16','8-16','W']));
+document.getElementById('add-row').addEventListener('click', ()=>{ rows.appendChild(row('')); render(); });
+document.body.addEventListener('click', e=>{ if(e.target.classList.contains('repeat-remove')){ e.target.closest('.repeat-block').remove(); render(); } });
+
+function render(){
+  const g = id => document.getElementById(id).value;
+  document.getElementById('p-period').textContent = g('f-period');
+  document.getElementById('p-place').textContent = g('f-place');
+  document.getElementById('p-rows').innerHTML = [...rows.querySelectorAll('.r-row')].map(r=>{
+    const name = escapeHtml(r.querySelector('.r-name').value);
+    const days = [0,1,2,3,4,5,6].map(i=>escapeHtml(r.querySelector('.r-d'+i).value));
+    return `<tr><td><b>${name}</b></td>${days.map(x=>`<td>${x}</td>`).join('')}</tr>`;
+  }).join('');
+}
+document.body.addEventListener('input', render);
+render();
+initZoom('paper');
+initDownload('downloadBtn', 'Grafik_pracy');
+</script>
+</body>
+</html>

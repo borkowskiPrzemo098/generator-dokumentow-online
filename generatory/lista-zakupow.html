@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generator listy zakupów — drukowalna checklista PDF</title>
+<meta name="description" content="Darmowy generator listy zakupów z polami do odhaczenia. Wypełnij pozycje i pobierz gotową checklistę w PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap bar">
+  <a href="../index.html" class="brand"><span class="mark">G</span>Generator dokumentów</a>
+  <nav class="nav-links"><a href="../index.html#dokumenty">Wszystkie dokumenty</a><a href="../index.html#faq">FAQ</a></nav>
+  <a href="../index.html#dokumenty" class="nav-cta">Inne generatory</a>
+</div></header>
+
+<div class="wrap crumbs"><a href="../index.html">Strona główna</a><span>/</span><a href="../index.html#dokumenty">Dokumenty</a><span>/</span>Lista zakupów</div>
+
+<div class="wrap gen-head">
+  <span class="tag">Organizacja</span>
+  <h1>Generator listy zakupów</h1>
+  <p>Prosta checklista do druku lub wzięcia na telefonie — dodaj dowolną liczbę produktów.</p>
+</div>
+
+<div class="wrap gen-layout">
+  <div class="panel">
+    <h2>Tytuł listy</h2>
+    <div class="field"><input id="f-title" value="Zakupy na weekend"></div>
+
+    <h2 style="margin-top:22px">Produkty (każdy w nowej linii)</h2>
+    <div class="field"><textarea id="f-items" style="min-height:260px">Mleko
+Chleb
+Jajka
+Masło
+Owoce sezonowe
+Warzywa na zupę
+Kawa
+Ręczniki papierowe</textarea></div>
+
+    <button class="btn-primary" id="downloadBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+      Pobierz jako PDF
+    </button>
+  </div>
+
+  <div class="preview-wrap">
+    <div class="preview-toolbar"><span class="lbl">Podgląd na żywo</span><div class="zoom-controls"><button type="button" data-zoom="-1">−</button><button type="button" data-zoom="1">+</button></div></div>
+    <div class="preview-stage">
+      <div class="paper-doc table-doc" id="paper" style="transform:scale(.62)">
+        <div class="doc-title" id="p-title"></div>
+        <div class="doc-sub">Wygenerowano: <span id="p-date"></span></div>
+        <ul class="check-list" id="p-items"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer"></footer>
+
+<script src="../assets/js/common.js"></script>
+<script>
+document.getElementById('p-date').textContent = todayPL();
+function render(){
+  const g = id => document.getElementById(id).value;
+  document.getElementById('p-title').textContent = g('f-title');
+  document.getElementById('p-items').innerHTML = g('f-items').split('\n').map(s=>s.trim()).filter(Boolean)
+    .map(s=>`<li><span class="box"></span>${escapeHtml(s)}</li>`).join('');
+}
+document.body.addEventListener('input', render);
+render();
+initZoom('paper');
+initDownload('downloadBtn', 'Lista_zakupow');
+</script>
+</body>
+</html>

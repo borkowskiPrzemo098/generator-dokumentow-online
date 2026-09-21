@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zgoda rodzica na wyjazd dziecka — generator PDF</title>
+<meta name="description" content="Darmowy generator zgody rodzica lub opiekuna na wyjazd dziecka (wycieczka, obóz, kolonie). Wypełnij formularz i pobierz gotowy PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap bar">
+  <a href="../index.html" class="brand"><span class="mark">G</span>Generator dokumentów</a>
+  <nav class="nav-links"><a href="../index.html#dokumenty">Wszystkie dokumenty</a><a href="../index.html#faq">FAQ</a></nav>
+  <a href="../index.html#dokumenty" class="nav-cta">Inne generatory</a>
+</div></header>
+
+<div class="wrap crumbs"><a href="../index.html">Strona główna</a><span>/</span><a href="../index.html#dokumenty">Dokumenty</a><span>/</span>Zgoda na wyjazd dziecka</div>
+
+<div class="wrap gen-head">
+  <span class="tag">Pisma formalne</span>
+  <h1>Zgoda rodzica na wyjazd dziecka</h1>
+  <p>Pisemna zgoda opiekuna prawnego na udział dziecka w wycieczce, obozie lub koloniach.</p>
+</div>
+
+<div class="wrap gen-layout">
+  <div class="panel">
+    <h2>Rodzic / opiekun</h2>
+    <div class="field"><label>Imię i nazwisko</label><input id="f-sname" value="Anna Nowak"></div>
+    <div class="field-row">
+      <div class="field"><label>Adres zamieszkania</label><input id="f-saddr" value="ul. Leśna 8/2, 02-200 Warszawa"></div>
+      <div class="field"><label>Telefon kontaktowy</label><input id="f-phone" value="500 100 200"></div>
+    </div>
+
+    <h2 style="margin-top:22px">Dziecko</h2>
+    <div class="field-row">
+      <div class="field"><label>Imię i nazwisko dziecka</label><input id="f-child" value="Kacper Nowak"></div>
+      <div class="field"><label>Data urodzenia</label><input id="f-childdob" value="10.05.2015"></div>
+    </div>
+
+    <h2 style="margin-top:22px">Wyjazd</h2>
+    <div class="field"><label>Miejscowość i data wystawienia</label><input id="f-date" value=""></div>
+    <div class="field"><label>Nazwa wyjazdu / organizator</label><input id="f-trip" value="Zielona Szkoła — Zakopane, Szkoła Podstawowa nr 12"></div>
+    <div class="field-row">
+      <div class="field"><label>Termin od</label><input id="f-from" value="12.06.2026"></div>
+      <div class="field"><label>Termin do</label><input id="f-to" value="16.06.2026"></div>
+    </div>
+    <div class="field"><label>Dodatkowe informacje (choroby, alergie, leki)</label><textarea id="f-notes">Brak alergii i przewlekłych schorzeń.</textarea></div>
+
+    <button class="btn-primary" id="downloadBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+      Pobierz jako PDF
+    </button>
+    <div class="disclaimer">Organizator wyjazdu może wymagać dodatkowych informacji lub własnego wzoru zgody — potwierdź to wcześniej.</div>
+  </div>
+
+  <div class="preview-wrap">
+    <div class="preview-toolbar"><span class="lbl">Podgląd na żywo</span><div class="zoom-controls"><button type="button" data-zoom="-1">−</button><button type="button" data-zoom="1">+</button></div></div>
+    <div class="preview-stage">
+      <div class="paper-doc letter-doc" id="paper" style="transform:scale(.62)">
+        <div class="date" id="p-date" style="text-align:left;margin-top:0"></div>
+        <div class="subject" style="margin-top:34px">ZGODA RODZICA NA WYJAZD DZIECKA</div>
+        <div class="body-text" id="p-body"></div>
+        <div class="sign-block"><div class="sign-line" id="p-signname"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer"><div class="wrap footer-bottom">© 2026 Generator dokumentów online. Wzory mają charakter pomocniczy i nie stanowią porady prawnej.</div></footer>
+
+<script src="../assets/js/common.js"></script>
+<script>
+document.getElementById('f-date').value = 'Warszawa, ' + todayPL();
+function render(){
+  const g = id => document.getElementById(id).value;
+  document.getElementById('p-date').textContent = g('f-date');
+  document.getElementById('p-body').textContent = `Ja, niżej podpisana/y ${g('f-sname')}, zamieszkała/y pod adresem ${g('f-saddr')}, tel. ${g('f-phone')}, jako rodzic / opiekun prawny dziecka ${g('f-child')} (data urodzenia: ${g('f-childdob')}), wyrażam zgodę na jego udział w wyjeździe: ${g('f-trip')}, w terminie od ${g('f-from')} do ${g('f-to')} r.
+
+Informacje dodatkowe dotyczące stanu zdrowia dziecka: ${g('f-notes')}
+
+Oświadczam, że w razie zagrożenia zdrowia lub życia dziecka wyrażam zgodę na udzielenie mu niezbędnej pomocy medycznej.`;
+  document.getElementById('p-signname').textContent = g('f-sname');
+}
+document.body.addEventListener('input', render);
+render();
+initZoom('paper');
+initDownload('downloadBtn', 'Zgoda_na_wyjazd_dziecka');
+</script>
+</body>
+</html>

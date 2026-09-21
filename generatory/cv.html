@@ -11,8 +11,9 @@
 <link rel="stylesheet" href="../assets/css/style.css">
 <style>
   .cv-doc { display:flex; padding:0; width:210mm; min-height:297mm; }
+  #paper { --cv-accent: #16342c; }
   .cv-side {
-    width:72mm; background:var(--green-900); color:#eef7f1;
+    width:72mm; background:var(--cv-accent); color:#eef7f1;
     padding:16mm 12mm; flex-shrink:0;
   }
   .cv-side .avatar {
@@ -27,7 +28,7 @@
   .cv-side .skill-pill { display:inline-block; background:rgba(255,255,255,.12); padding:4px 10px; border-radius:999px; font-size:11.5px; margin:0 6px 6px 0; }
   .cv-main { flex:1; padding:16mm 14mm; }
   .cv-main .name { font-family:var(--font-serif); font-size:27px; color:var(--green-950); line-height:1.1; }
-  .cv-main .role { font-size:14.5px; color:var(--green-700); font-weight:600; margin-top:4px; }
+  .cv-main .role { font-size:14.5px; color:var(--cv-accent); font-weight:600; margin-top:4px; }
   .cv-main .about { font-size:12.8px; color:#4a5750; margin-top:14px; line-height:1.55; }
   .cv-main h4 { font-family:var(--font-sans); font-size:12px; text-transform:uppercase; letter-spacing:.07em; color:var(--green-700); border-bottom:2px solid var(--mint-200); padding-bottom:6px; margin:24px 0 14px; }
   .exp-item { margin-bottom:14px; }
@@ -60,7 +61,17 @@
 <div class="wrap gen-layout">
 
   <div class="panel">
-    <h2>Dane podstawowe</h2>
+    <h2>Kolorystyka CV</h2>
+    <div class="swatch-row" id="theme-picker">
+      <span class="swatch active" data-color="#16342c" style="background:#16342c"></span>
+      <span class="swatch" data-color="#1f3a5f" style="background:#1f3a5f"></span>
+      <span class="swatch" data-color="#5c2a3a" style="background:#5c2a3a"></span>
+      <span class="swatch" data-color="#7a5c1f" style="background:#7a5c1f"></span>
+      <span class="swatch" data-color="#3a3a3a" style="background:#3a3a3a"></span>
+      <span class="swatch" data-color="#2f5c4a" style="background:#2f5c4a"></span>
+    </div>
+
+    <h2 style="margin-top:22px">Dane podstawowe</h2>
     <div class="field-row">
       <div class="field"><label>Imię i nazwisko</label><input id="f-name" value="Anna Kowalska"></div>
       <div class="field"><label>Stanowisko</label><input id="f-role" value="Specjalistka ds. Marketingu"></div>
@@ -216,6 +227,7 @@ function render(){
 document.getElementById('cv-form') || document.body.addEventListener('input', render);
 render();
 initZoom('paper');
+initThemePicker('theme-picker', '--cv-accent', 'paper');
 initDownload('downloadBtn', 'Anna_Kowalska_CV');
 </script>
 </body>
