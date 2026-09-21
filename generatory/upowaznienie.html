@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generator upoważnienia / pełnomocnictwa online — PDF | Generator dokumentów</title>
+<meta name="description" content="Darmowy generator upoważnienia i pełnomocnictwa. Wypełnij formularz i pobierz gotowe pismo w PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a href="../index.html" class="brand"><span class="mark">G</span>Generator dokumentów</a>
+    <nav class="nav-links">
+      <a href="../index.html#dokumenty">Wszystkie dokumenty</a>
+      <a href="../index.html#faq">FAQ</a>
+    </nav>
+    <a href="../index.html#dokumenty" class="nav-cta">Inne generatory</a>
+  </div>
+</header>
+
+<div class="wrap crumbs"><a href="../index.html">Strona główna</a><span>/</span><a href="../index.html#dokumenty">Dokumenty</a><span>/</span>Upoważnienie</div>
+
+<div class="wrap gen-head">
+  <span class="tag">Pisma formalne</span>
+  <h1>Generator upoważnienia / pełnomocnictwa</h1>
+  <p>Uzupełnij dane obu stron i zakres sprawy — gotowe pismo pojawi się w podglądzie po prawej.</p>
+</div>
+
+<div class="wrap gen-layout">
+  <div class="panel">
+    <h2>Osoba udzielająca upoważnienia</h2>
+    <div class="field"><label>Imię i nazwisko</label><input id="f-name1" value="Jan Nowak"></div>
+    <div class="field-row">
+      <div class="field"><label>Adres zamieszkania</label><input id="f-addr1" value="ul. Leśna 8/2, 02-200 Warszawa"></div>
+      <div class="field"><label>Nr dowodu osobistego</label><input id="f-id1" value="ABC 123456"></div>
+    </div>
+
+    <h2 style="margin-top:22px">Osoba upoważniona</h2>
+    <div class="field"><label>Imię i nazwisko</label><input id="f-name2" value="Anna Nowak"></div>
+    <div class="field-row">
+      <div class="field"><label>Adres zamieszkania</label><input id="f-addr2" value="ul. Leśna 8/2, 02-200 Warszawa"></div>
+      <div class="field"><label>Nr dowodu osobistego</label><input id="f-id2" value="XYZ 654321"></div>
+    </div>
+
+    <h2 style="margin-top:22px">Zakres upoważnienia</h2>
+    <div class="field"><label>Miejscowość i data</label><input id="f-date" value=""></div>
+    <div class="field"><label>Do czego upoważniasz</label><textarea id="f-scope">odbioru zaświadczenia o niezaleganiu w opłatach oraz podpisania niezbędnych dokumentów w tej sprawie</textarea></div>
+
+    <button class="btn-primary" id="downloadBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+      Pobierz jako PDF
+    </button>
+    <div class="disclaimer">Wzór dotyczy upoważnienia jednorazowego do konkretnej czynności. Dla pełnomocnictwa notarialnego wymagana jest forma aktu notarialnego.</div>
+  </div>
+
+  <div class="preview-wrap">
+    <div class="preview-toolbar">
+      <span class="lbl">Podgląd na żywo</span>
+      <div class="zoom-controls"><button type="button" data-zoom="-1">−</button><button type="button" data-zoom="1">+</button></div>
+    </div>
+    <div class="preview-stage">
+      <div class="paper-doc letter-doc" id="paper" style="transform:scale(.62)">
+        <div class="date" id="p-date" style="text-align:left;margin-top:0"></div>
+        <div class="subject" style="margin-top:34px">UPOWAŻNIENIE</div>
+        <div class="body-text" id="p-body"></div>
+        <div style="display:flex;justify-content:space-between;margin-top:60px">
+          <div class="sign-block" style="margin:0"><div class="sign-line">podpis osoby upoważniającej</div></div>
+          <div class="sign-block" style="margin:0"><div class="sign-line">podpis osoby upoważnionej</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer"><div class="wrap footer-bottom">© 2026 Generator dokumentów online. Wzory mają charakter pomocniczy i nie stanowią porady prawnej.</div></footer>
+
+<script src="../assets/js/common.js"></script>
+<script>
+document.getElementById('f-date').value = 'Warszawa, ' + todayPL();
+
+function render(){
+  const g = id => document.getElementById(id).value;
+  document.getElementById('p-date').textContent = g('f-date');
+  const body = `Ja, niżej podpisany/a ${g('f-name1')}, zamieszkały/a pod adresem ${g('f-addr1')}, legitymujący/a się dowodem osobistym nr ${g('f-id1')}, upoważniam ${g('f-name2')}, zamieszkałego/ą pod adresem ${g('f-addr2')}, legitymującego/ą się dowodem osobistym nr ${g('f-id2')}, do ${g('f-scope')}.
+
+Niniejsze upoważnienie zachowuje ważność do czasu jego pisemnego odwołania.`;
+  document.getElementById('p-body').textContent = body;
+}
+document.body.addEventListener('input', render);
+render();
+initZoom('paper');
+initDownload('downloadBtn', 'Upowaznienie');
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generator wezwania do zapłaty i reklamacji online — PDF | Generator dokumentów</title>
+<meta name="description" content="Darmowy generator wezwania do zapłaty i reklamacji. Wypełnij formularz i pobierz gotowe pismo w PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a href="../index.html" class="brand"><span class="mark">G</span>Generator dokumentów</a>
+    <nav class="nav-links">
+      <a href="../index.html#dokumenty">Wszystkie dokumenty</a>
+      <a href="../index.html#faq">FAQ</a>
+    </nav>
+    <a href="../index.html#dokumenty" class="nav-cta">Inne generatory</a>
+  </div>
+</header>
+
+<div class="wrap crumbs"><a href="../index.html">Strona główna</a><span>/</span><a href="../index.html#dokumenty">Dokumenty</a><span>/</span>Wezwanie / reklamacja</div>
+
+<div class="wrap gen-head">
+  <span class="tag">Pisma formalne</span>
+  <h1>Generator wezwania do zapłaty / reklamacji</h1>
+  <p>Wybierz rodzaj pisma, uzupełnij dane — reszta formatowania dzieje się automatycznie.</p>
+</div>
+
+<div class="wrap gen-layout">
+  <div class="panel">
+    <h2>Rodzaj pisma</h2>
+    <div class="field">
+      <select id="f-type">
+        <option value="wezwanie">Wezwanie do zapłaty</option>
+        <option value="reklamacja">Reklamacja towaru / usługi</option>
+      </select>
+    </div>
+
+    <h2 style="margin-top:22px">Nadawca</h2>
+    <div class="field"><label>Imię i nazwisko / firma</label><input id="f-sname" value="Jan Nowak"></div>
+    <div class="field"><label>Adres</label><textarea id="f-saddr">ul. Leśna 8/2
+02-200 Warszawa</textarea></div>
+
+    <h2 style="margin-top:22px">Adresat</h2>
+    <div class="field"><label>Miejscowość i data</label><input id="f-date" value=""></div>
+    <div class="field"><label>Dane adresata</label><textarea id="f-raddr">Sklep Internetowy ABC Sp. z o.o.
+ul. Handlowa 10
+00-900 Warszawa</textarea></div>
+
+    <h2 style="margin-top:22px" id="detailsHeading">Szczegóły sprawy</h2>
+    <div class="field-row">
+      <div class="field"><label id="lbl1">Nr faktury / zamówienia</label><input id="f-ref" value="FV/2026/00456"></div>
+      <div class="field"><label id="lbl2">Kwota / wartość</label><input id="f-amount" value="1 250,00 zł"></div>
+    </div>
+    <div class="field"><label id="lbl3">Opis sprawy</label><textarea id="f-desc" style="min-height:140px">W dniu 3 lutego 2026 r. otrzymałem fakturę nr FV/2026/00456 na kwotę 1 250,00 zł z terminem płatności do 17 lutego 2026 r. Do dziś nie odnotowałem wpłaty z Państwa strony.</textarea></div>
+    <div class="field"><label id="lbl4">Termin realizacji żądania (dni)</label><input id="f-deadline" value="7"></div>
+
+    <button class="btn-primary" id="downloadBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+      Pobierz jako PDF
+    </button>
+    <div class="disclaimer">Wzór ma charakter pomocniczy — w sprawach o wyższej wartości sporu warto skonsultować pismo z prawnikiem.</div>
+  </div>
+
+  <div class="preview-wrap">
+    <div class="preview-toolbar">
+      <span class="lbl">Podgląd na żywo</span>
+      <div class="zoom-controls"><button type="button" data-zoom="-1">−</button><button type="button" data-zoom="1">+</button></div>
+    </div>
+    <div class="preview-stage">
+      <div class="paper-doc letter-doc" id="paper" style="transform:scale(.62)">
+        <div class="sender" id="p-sender"></div>
+        <div class="date" id="p-date"></div>
+        <div class="recipient" id="p-recipient"></div>
+        <div class="subject" id="p-subject"></div>
+        <div class="body-text" id="p-body"></div>
+        <div class="sign-block"><div class="sign-line" id="p-signname"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer"><div class="wrap footer-bottom">© 2026 Generator dokumentów online. Wzory mają charakter pomocniczy i nie stanowią porady prawnej.</div></footer>
+
+<script src="../assets/js/common.js"></script>
+<script>
+document.getElementById('f-date').value = 'Warszawa, ' + todayPL();
+
+function updateLabels(){
+  const isWez = document.getElementById('f-type').value === 'wezwanie';
+  document.getElementById('lbl1').textContent = isWez ? 'Nr faktury / zamówienia' : 'Nr paragonu / zamówienia';
+  document.getElementById('lbl2').textContent = isWez ? 'Kwota zaległości' : 'Wartość towaru / usługi';
+  document.getElementById('lbl3').textContent = 'Opis sprawy';
+  document.getElementById('lbl4').textContent = isWez ? 'Termin zapłaty (dni)' : 'Termin rozpatrzenia (dni)';
+}
+
+function render(){
+  const g = id => document.getElementById(id).value;
+  const isWez = g('f-type') === 'wezwanie';
+
+  document.getElementById('p-sender').textContent = g('f-sname') + '\n' + g('f-saddr');
+  document.getElementById('p-date').textContent = g('f-date');
+  document.getElementById('p-recipient').textContent = g('f-raddr');
+  document.getElementById('p-subject').textContent = isWez ? 'WEZWANIE DO ZAPŁATY' : 'REKLAMACJA';
+
+  const body = isWez
+    ? `${g('f-desc')}
+
+W związku z powyższym wzywam do zapłaty kwoty ${g('f-amount')} tytułem należności wynikającej z ${g('f-ref')}, w terminie ${g('f-deadline')} dni od dnia otrzymania niniejszego pisma.
+
+W przypadku braku zapłaty we wskazanym terminie sprawa zostanie skierowana na drogę postępowania sądowego.`
+    : `${g('f-desc')}
+
+Na podstawie obowiązujących przepisów o ochronie praw konsumenta zgłaszam reklamację dotyczącą ${g('f-ref')} o wartości ${g('f-amount')} i wnoszę o jej rozpatrzenie w terminie ${g('f-deadline')} dni od dnia otrzymania niniejszego pisma.
+
+Oczekuję informacji o sposobie rozpatrzenia reklamacji na wskazany adres korespondencyjny.`;
+
+  document.getElementById('p-body').textContent = body;
+  document.getElementById('p-signname').textContent = g('f-sname');
+}
+
+document.getElementById('f-type').addEventListener('change', ()=>{ updateLabels(); render(); });
+document.body.addEventListener('input', render);
+updateLabels();
+render();
+initZoom('paper');
+initDownload('downloadBtn', 'Pismo_formalne');
+</script>
+</body>
+</html>

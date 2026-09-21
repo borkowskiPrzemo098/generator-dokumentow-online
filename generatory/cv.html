@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generator CV online — stwórz życiorys i pobierz PDF | Generator dokumentów</title>
+<meta name="description" content="Darmowy generator CV. Wypełnij formularz, zobacz podgląd na żywo i pobierz gotowe, elegancko sformatowane CV w PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  .cv-doc { display:flex; padding:0; width:210mm; min-height:297mm; }
+  .cv-side {
+    width:72mm; background:var(--green-900); color:#eef7f1;
+    padding:16mm 12mm; flex-shrink:0;
+  }
+  .cv-side .avatar {
+    width:76px; height:76px; border-radius:50%;
+    background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.3);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-serif); font-size:26px; margin-bottom:22px;
+  }
+  .cv-side h4 { color:#cfe8de; font-family:var(--font-sans); font-size:11px; text-transform:uppercase; letter-spacing:.08em; margin:22px 0 10px; }
+  .cv-side h4:first-of-type { margin-top:0; }
+  .cv-side .row { font-size:12.5px; margin-bottom:8px; line-height:1.45; color:#e4f0e8; word-break:break-word; }
+  .cv-side .skill-pill { display:inline-block; background:rgba(255,255,255,.12); padding:4px 10px; border-radius:999px; font-size:11.5px; margin:0 6px 6px 0; }
+  .cv-main { flex:1; padding:16mm 14mm; }
+  .cv-main .name { font-family:var(--font-serif); font-size:27px; color:var(--green-950); line-height:1.1; }
+  .cv-main .role { font-size:14.5px; color:var(--green-700); font-weight:600; margin-top:4px; }
+  .cv-main .about { font-size:12.8px; color:#4a5750; margin-top:14px; line-height:1.55; }
+  .cv-main h4 { font-family:var(--font-sans); font-size:12px; text-transform:uppercase; letter-spacing:.07em; color:var(--green-700); border-bottom:2px solid var(--mint-200); padding-bottom:6px; margin:24px 0 14px; }
+  .exp-item { margin-bottom:14px; }
+  .exp-item .top { display:flex; justify-content:space-between; gap:10px; font-size:13.5px; font-weight:700; color:var(--green-950); }
+  .exp-item .sub { font-size:12px; color:var(--ink-faint); margin:2px 0 6px; }
+  .exp-item .desc { font-size:12.3px; color:#4a5750; line-height:1.5; white-space:pre-line; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a href="../index.html" class="brand"><span class="mark">G</span>Generator dokumentów</a>
+    <nav class="nav-links">
+      <a href="../index.html#dokumenty">Wszystkie dokumenty</a>
+      <a href="../index.html#faq">FAQ</a>
+    </nav>
+    <a href="../index.html#dokumenty" class="nav-cta">Inne generatory</a>
+  </div>
+</header>
+
+<div class="wrap crumbs"><a href="../index.html">Strona główna</a><span>/</span><a href="../index.html#dokumenty">Dokumenty</a><span>/</span>Generator CV</div>
+
+<div class="wrap gen-head">
+  <span class="tag">Kariera</span>
+  <h1>Generator CV</h1>
+  <p>Uzupełnij dane po lewej — CV po prawej aktualizuje się na bieżąco. Gdy będzie gotowe, pobierz je jako PDF jednym kliknięciem.</p>
+</div>
+
+<div class="wrap gen-layout">
+
+  <div class="panel">
+    <h2>Dane podstawowe</h2>
+    <div class="field-row">
+      <div class="field"><label>Imię i nazwisko</label><input id="f-name" value="Anna Kowalska"></div>
+      <div class="field"><label>Stanowisko</label><input id="f-role" value="Specjalistka ds. Marketingu"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>E-mail</label><input id="f-email" value="anna.kowalska@email.pl"></div>
+      <div class="field"><label>Telefon</label><input id="f-phone" value="500 100 200"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>Miasto</label><input id="f-city" value="Warszawa"></div>
+      <div class="field"><label>LinkedIn / WWW</label><input id="f-web" value="linkedin.com/in/annakowalska"></div>
+    </div>
+    <div class="field"><label>O mnie</label><textarea id="f-about">Specjalistka ds. marketingu z 5-letnim doświadczeniem w kampaniach digital. Skupiona na wynikach, lubię pracę zespołową i uczenie nowych narzędzi.</textarea></div>
+
+    <h2 style="margin-top:26px">Doświadczenie zawodowe</h2>
+    <div id="exp-list"></div>
+    <button class="btn-add" id="add-exp" type="button">+ Dodaj doświadczenie</button>
+
+    <h2 style="margin-top:26px">Wykształcenie</h2>
+    <div id="edu-list"></div>
+    <button class="btn-add" id="add-edu" type="button">+ Dodaj wykształcenie</button>
+
+    <h2 style="margin-top:26px">Umiejętności i języki</h2>
+    <div class="field"><label>Umiejętności (oddziel przecinkiem)</label><input id="f-skills" value="Google Ads, Meta Ads, Analiza danych, Canva, Excel"></div>
+    <div class="field"><label>Języki (oddziel przecinkiem)</label><input id="f-langs" value="Angielski — B2, Niemiecki — A2"></div>
+
+    <button class="btn-primary" id="downloadBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+      Pobierz CV jako PDF
+    </button>
+    <div class="disclaimer">Wzór CV ma charakter pomocniczy. Wszystkie dane wpisujesz samodzielnie i to Ty odpowiadasz za ich treść i poprawność.</div>
+  </div>
+
+  <div class="preview-wrap">
+    <div class="preview-toolbar">
+      <span class="lbl">Podgląd na żywo</span>
+      <div class="zoom-controls">
+        <button type="button" data-zoom="-1">−</button>
+        <button type="button" data-zoom="1">+</button>
+      </div>
+    </div>
+    <div class="preview-stage">
+      <div class="paper-doc cv-doc" id="paper" style="transform:scale(.62)">
+        <div class="cv-side">
+          <div class="avatar" id="p-initials">AK</div>
+          <h4>Kontakt</h4>
+          <div class="row" id="p-email">anna.kowalska@email.pl</div>
+          <div class="row" id="p-phone">500 100 200</div>
+          <div class="row" id="p-city">Warszawa</div>
+          <div class="row" id="p-web">linkedin.com/in/annakowalska</div>
+          <h4>Umiejętności</h4>
+          <div id="p-skills"></div>
+          <h4>Języki</h4>
+          <div id="p-langs"></div>
+        </div>
+        <div class="cv-main">
+          <div class="name" id="p-name">Anna Kowalska</div>
+          <div class="role" id="p-role">Specjalistka ds. Marketingu</div>
+          <div class="about" id="p-about"></div>
+          <h4>Doświadczenie zawodowe</h4>
+          <div id="p-exp"></div>
+          <h4>Wykształcenie</h4>
+          <div id="p-edu"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap footer-bottom">© 2026 Generator dokumentów online. Wzory mają charakter pomocniczy i nie stanowią porady prawnej.</div>
+</footer>
+
+<script src="../assets/js/common.js"></script>
+<script>
+function expRow(v){
+  v = v || {};
+  const d = document.createElement('div');
+  d.className = 'repeat-block exp-row';
+  d.innerHTML = `
+    <button class="repeat-remove" type="button">×</button>
+    <div class="field-row">
+      <div class="field"><label>Stanowisko</label><input class="e-title" value="${v.title||''}"></div>
+      <div class="field"><label>Firma</label><input class="e-company" value="${v.company||''}"></div>
+    </div>
+    <div class="field"><label>Okres</label><input class="e-period" value="${v.period||''}"></div>
+    <div class="field"><label>Opis obowiązków</label><textarea class="e-desc">${v.desc||''}</textarea></div>`;
+  return d;
+}
+function eduRow(v){
+  v = v || {};
+  const d = document.createElement('div');
+  d.className = 'repeat-block edu-row';
+  d.innerHTML = `
+    <button class="repeat-remove" type="button">×</button>
+    <div class="field"><label>Kierunek / szkoła</label><input class="d-name" value="${v.name||''}"></div>
+    <div class="field-row">
+      <div class="field"><label>Uczelnia</label><input class="d-school" value="${v.school||''}"></div>
+      <div class="field"><label>Okres</label><input class="d-period" value="${v.period||''}"></div>
+    </div>`;
+  return d;
+}
+
+const expList = document.getElementById('exp-list');
+const eduList = document.getElementById('edu-list');
+
+expList.appendChild(expRow({title:'Specjalistka ds. Marketingu', company:'Firma XYZ Sp. z o.o.', period:'2021 — obecnie', desc:'Prowadzenie kampanii Google Ads i Meta Ads.\nAnaliza wyników i optymalizacja budżetu reklamowego.'}));
+expList.appendChild(expRow({title:'Junior Marketing Specialist', company:'Agencja ABC', period:'2019 — 2021', desc:'Tworzenie treści na social media, wsparcie kampanii mailingowych.'}));
+eduList.appendChild(eduRow({name:'Marketing i Zarządzanie', school:'Uniwersytet Warszawski', period:'2015 — 2019'}));
+
+document.getElementById('add-exp').addEventListener('click', ()=>{ expList.appendChild(expRow()); render(); });
+document.getElementById('add-edu').addEventListener('click', ()=>{ eduList.appendChild(eduRow()); render(); });
+
+document.body.addEventListener('click', function(e){
+  if(e.target.classList.contains('repeat-remove')){
+    e.target.closest('.repeat-block').remove();
+    render();
+  }
+});
+
+function initials(name){
+  return name.trim().split(/\s+/).map(w=>w[0]||'').join('').slice(0,2).toUpperCase();
+}
+
+function render(){
+  const g = id => document.getElementById(id).value;
+  document.getElementById('p-name').textContent = g('f-name') || 'Imię i nazwisko';
+  document.getElementById('p-role').textContent = g('f-role');
+  document.getElementById('p-initials').textContent = initials(g('f-name')||'CV');
+  document.getElementById('p-email').textContent = g('f-email');
+  document.getElementById('p-phone').textContent = g('f-phone');
+  document.getElementById('p-city').textContent = g('f-city');
+  document.getElementById('p-web').textContent = g('f-web');
+  document.getElementById('p-about').textContent = g('f-about');
+
+  document.getElementById('p-skills').innerHTML = g('f-skills').split(',').map(s=>s.trim()).filter(Boolean)
+    .map(s=>`<span class="skill-pill">${escapeHtml(s)}</span>`).join('');
+  document.getElementById('p-langs').innerHTML = g('f-langs').split(',').map(s=>s.trim()).filter(Boolean)
+    .map(s=>`<div class="row">${escapeHtml(s)}</div>`).join('');
+
+  document.getElementById('p-exp').innerHTML = [...expList.querySelectorAll('.exp-row')].map(row=>{
+    const t = row.querySelector('.e-title').value, c = row.querySelector('.e-company').value;
+    const p = row.querySelector('.e-period').value, d = row.querySelector('.e-desc').value;
+    return `<div class="exp-item"><div class="top"><span>${escapeHtml(t)}</span><span style="color:var(--ink-faint);font-weight:600">${escapeHtml(p)}</span></div><div class="sub">${escapeHtml(c)}</div><div class="desc">${escapeHtml(d)}</div></div>`;
+  }).join('');
+
+  document.getElementById('p-edu').innerHTML = [...eduList.querySelectorAll('.edu-row')].map(row=>{
+    const n = row.querySelector('.d-name').value, s = row.querySelector('.d-school').value, p = row.querySelector('.d-period').value;
+    return `<div class="exp-item"><div class="top"><span>${escapeHtml(n)}</span><span style="color:var(--ink-faint);font-weight:600">${escapeHtml(p)}</span></div><div class="sub">${escapeHtml(s)}</div></div>`;
+  }).join('');
+}
+
+document.getElementById('cv-form') || document.body.addEventListener('input', render);
+render();
+initZoom('paper');
+initDownload('downloadBtn', 'Anna_Kowalska_CV');
+</script>
+</body>
+</html>

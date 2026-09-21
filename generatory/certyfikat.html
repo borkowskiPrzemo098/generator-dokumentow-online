@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generator certyfikatu / dyplomu online — PDF | Generator dokumentów</title>
+<meta name="description" content="Darmowy generator ozdobnego certyfikatu i dyplomu uznania. Wypełnij formularz i pobierz gotowy dokument w PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  #paper.paper-doc { width: 297mm; min-height: 210mm; padding: 0; }
+  @media print {
+    @page { size: A4 landscape; margin: 0; }
+    .paper-doc { width: 297mm !important; min-height: 210mm !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a href="../index.html" class="brand"><span class="mark">G</span>Generator dokumentów</a>
+    <nav class="nav-links">
+      <a href="../index.html#dokumenty">Wszystkie dokumenty</a>
+      <a href="../index.html#faq">FAQ</a>
+    </nav>
+    <a href="../index.html#dokumenty" class="nav-cta">Inne generatory</a>
+  </div>
+</header>
+
+<div class="wrap crumbs"><a href="../index.html">Strona główna</a><span>/</span><a href="../index.html#dokumenty">Dokumenty</a><span>/</span>Certyfikat</div>
+
+<div class="wrap gen-head">
+  <span class="tag">Okolicznościowe</span>
+  <h1>Generator certyfikatu / dyplomu</h1>
+  <p>Ozdobny dyplom uznania w formacie poziomym A4 — idealny dla kursu, konkursu, eventu lub podziękowania.</p>
+</div>
+
+<div class="wrap gen-layout">
+  <div class="panel">
+    <h2>Treść dyplomu</h2>
+    <div class="field"><label>Nagłówek (mały, nad tytułem)</label><input id="f-eyebrow" value="Certyfikat uznania"></div>
+    <div class="field"><label>Tytuł główny</label><input id="f-title" value="DYPLOM"></div>
+    <div class="field"><label>Zdanie wprowadzające</label><input id="f-sub" value="niniejszym potwierdza się, że"></div>
+    <div class="field"><label>Imię i nazwisko / nazwa</label><input id="f-name" value="Anna Kowalska"></div>
+    <div class="field"><label>Uzasadnienie</label><textarea id="f-reason">ukończyła kurs „Marketing internetowy od podstaw” z wynikiem bardzo dobrym i wykazała się dużym zaangażowaniem podczas wszystkich zajęć.</textarea></div>
+
+    <h2 style="margin-top:22px">Podpisy</h2>
+    <div class="field-row">
+      <div class="field"><label>Podpis 1 — opis</label><input id="f-sign1" value="Organizator"></div>
+      <div class="field"><label>Podpis 2 — opis</label><input id="f-sign2" value="Prowadzący kurs"></div>
+    </div>
+    <div class="field"><label>Data</label><input id="f-date" value=""></div>
+
+    <button class="btn-primary" id="downloadBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+      Pobierz jako PDF
+    </button>
+    <div class="disclaimer">Wskazówka: w oknie drukowania ustaw orientację „Pozioma”, aby dyplom zmieścił się poprawnie na stronie.</div>
+  </div>
+
+  <div class="preview-wrap">
+    <div class="preview-toolbar">
+      <span class="lbl">Podgląd na żywo</span>
+      <div class="zoom-controls"><button type="button" data-zoom="-1">−</button><button type="button" data-zoom="1">+</button></div>
+    </div>
+    <div class="preview-stage">
+      <div class="paper-doc cert-doc" id="paper" style="transform:scale(.45)">
+        <div class="cert-frame">
+          <div class="cert-eyebrow" id="p-eyebrow">Certyfikat uznania</div>
+          <div class="cert-title" id="p-title">DYPLOM</div>
+          <div class="cert-sub" id="p-sub">niniejszym potwierdza się, że</div>
+          <div class="cert-name" id="p-name">Anna Kowalska</div>
+          <div class="cert-reason" id="p-reason"></div>
+          <div class="cert-footer">
+            <div class="cert-sign"><div class="ln" id="p-sign1lbl">Organizator</div></div>
+            <div class="cert-sign"><div class="ln" id="p-datelbl"></div></div>
+            <div class="cert-sign"><div class="ln" id="p-sign2lbl">Prowadzący kurs</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer"><div class="wrap footer-bottom">© 2026 Generator dokumentów online. Wzory mają charakter pomocniczy i nie stanowią porady prawnej.</div></footer>
+
+<script src="../assets/js/common.js"></script>
+<script>
+document.getElementById('f-date').value = todayPL();
+
+function render(){
+  const g = id => document.getElementById(id).value;
+  document.getElementById('p-eyebrow').textContent = g('f-eyebrow');
+  document.getElementById('p-title').textContent = g('f-title');
+  document.getElementById('p-sub').textContent = g('f-sub');
+  document.getElementById('p-name').textContent = g('f-name');
+  document.getElementById('p-reason').textContent = g('f-reason');
+  document.getElementById('p-sign1lbl').textContent = g('f-sign1');
+  document.getElementById('p-sign2lbl').textContent = g('f-sign2');
+  document.getElementById('p-datelbl').textContent = g('f-date');
+}
+document.body.addEventListener('input', render);
+render();
+initZoom('paper');
+initDownload('downloadBtn', 'Certyfikat');
+</script>
+</body>
+</html>

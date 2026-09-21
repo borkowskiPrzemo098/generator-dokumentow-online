@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generator wizytówki online — PDF do druku | Generator dokumentów</title>
+<meta name="description" content="Darmowy generator eleganckiej wizytówki firmowej. Wypełnij dane i pobierz gotowy do druku PDF z awersem i rewersem.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a href="../index.html" class="brand"><span class="mark">G</span>Generator dokumentów</a>
+    <nav class="nav-links">
+      <a href="../index.html#dokumenty">Wszystkie dokumenty</a>
+      <a href="../index.html#faq">FAQ</a>
+    </nav>
+    <a href="../index.html#dokumenty" class="nav-cta">Inne generatory</a>
+  </div>
+</header>
+
+<div class="wrap crumbs"><a href="../index.html">Strona główna</a><span>/</span><a href="../index.html#dokumenty">Dokumenty</a><span>/</span>Wizytówka</div>
+
+<div class="wrap gen-head">
+  <span class="tag">Wizerunek firmy</span>
+  <h1>Generator wizytówki</h1>
+  <p>Uzupełnij dane firmowe — po prawej zobaczysz awers i rewers wizytówki w rozmiarze standardowym 88×50 mm, gotowe do druku.</p>
+</div>
+
+<div class="wrap gen-layout">
+  <div class="panel">
+    <h2>Dane firmowe</h2>
+    <div class="field"><label>Inicjał / logo (1–2 litery)</label><input id="f-mark" value="AK" maxlength="2"></div>
+    <div class="field"><label>Nazwa firmy</label><input id="f-company" value="Kowalska Studio"></div>
+    <div class="field"><label>Slogan / branża</label><input id="f-tag" value="Projektowanie graficzne i marka"></div>
+
+    <h2 style="margin-top:22px">Dane osoby</h2>
+    <div class="field"><label>Imię i nazwisko</label><input id="f-name" value="Anna Kowalska"></div>
+    <div class="field"><label>Stanowisko</label><input id="f-role" value="Właścicielka / Dyrektor Kreatywny"></div>
+
+    <h2 style="margin-top:22px">Kontakt</h2>
+    <div class="field"><label>Telefon</label><input id="f-phone" value="500 100 200"></div>
+    <div class="field"><label>E-mail</label><input id="f-email" value="anna@kowalskastudio.pl"></div>
+    <div class="field"><label>Strona WWW</label><input id="f-web" value="kowalskastudio.pl"></div>
+
+    <button class="btn-primary" id="downloadBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+      Pobierz jako PDF
+    </button>
+    <div class="disclaimer">Arkusz A4 zawiera awers i rewers w skali 1:1 — po wydruku wystarczy wyciąć wizytówkę wzdłuż krawędzi.</div>
+  </div>
+
+  <div class="preview-wrap">
+    <div class="preview-toolbar">
+      <span class="lbl">Podgląd na żywo</span>
+      <div class="zoom-controls"><button type="button" data-zoom="-1">−</button><button type="button" data-zoom="1">+</button></div>
+    </div>
+    <div class="preview-stage">
+      <div class="paper-doc card-doc" id="paper" style="transform:scale(.62)">
+        <div class="biz-card front">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <div class="bc-mark" id="p-mark">AK</div>
+          </div>
+          <div>
+            <div class="bc-name" id="p-name">Anna Kowalska</div>
+            <div class="bc-role" id="p-role">Właścicielka / Dyrektor Kreatywny</div>
+          </div>
+          <div class="bc-contacts">
+            <div id="p-phone">500 100 200</div>
+            <div id="p-email">anna@kowalskastudio.pl</div>
+            <div id="p-web">kowalskastudio.pl</div>
+          </div>
+        </div>
+        <div class="biz-card back">
+          <div class="bc-mark2" id="p-mark2">AK</div>
+          <div class="bc-company" id="p-company">Kowalska Studio</div>
+          <div class="bc-tag" id="p-tag">Projektowanie graficzne i marka</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer"><div class="wrap footer-bottom">© 2026 Generator dokumentów online. Wzory mają charakter pomocniczy i nie stanowią porady prawnej.</div></footer>
+
+<script src="../assets/js/common.js"></script>
+<script>
+function render(){
+  const g = id => document.getElementById(id).value;
+  const mark = (g('f-mark') || 'AB').toUpperCase();
+  document.getElementById('p-mark').textContent = mark;
+  document.getElementById('p-mark2').textContent = mark;
+  document.getElementById('p-name').textContent = g('f-name');
+  document.getElementById('p-role').textContent = g('f-role');
+  document.getElementById('p-phone').textContent = g('f-phone');
+  document.getElementById('p-email').textContent = g('f-email');
+  document.getElementById('p-web').textContent = g('f-web');
+  document.getElementById('p-company').textContent = g('f-company');
+  document.getElementById('p-tag').textContent = g('f-tag');
+}
+document.body.addEventListener('input', render);
+render();
+initZoom('paper');
+initDownload('downloadBtn', 'Wizytowka');
+</script>
+</body>
+</html>
