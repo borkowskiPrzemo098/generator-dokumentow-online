@@ -16,11 +16,23 @@ function todayPL(){
 // przybliżanie / oddalanie podglądu dokumentu
 function initZoom(paperId){
   const paper = document.getElementById(paperId);
+  const stage = paper.closest('.preview-stage');
   let scale = 0.62;
+
+  if(stage && window.innerWidth <= 600){
+    const stylePad = parseFloat(getComputedStyle(stage).paddingLeft || 0) + parseFloat(getComputedStyle(stage).paddingRight || 0);
+    const available = stage.clientWidth - stylePad;
+    const naturalWidth = paper.offsetWidth;
+    if(naturalWidth > 0 && available > 0){
+      scale = Math.max(0.28, Math.min(0.62, available / naturalWidth));
+    }
+  }
+  paper.style.transform = 'scale(' + scale + ')';
+
   document.querySelectorAll('.zoom-controls button').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       const dir = parseInt(btn.dataset.zoom, 10);
-      scale = Math.min(1, Math.max(0.35, scale + dir * 0.08));
+      scale = Math.min(1, Math.max(0.22, scale + dir * 0.08));
       paper.style.transform = 'scale(' + scale + ')';
     });
   });

@@ -43,6 +43,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+html, body { max-width: 100%; overflow-x: hidden; }
 body {
   margin: 0;
   background: var(--bg);
@@ -446,6 +447,7 @@ h1, h2, h3, h4 {
   padding: 28px 0 72px;
   align-items: flex-start;
 }
+.gen-layout > * { min-width: 0; }
 
 .panel {
   background: var(--paper);
@@ -608,8 +610,8 @@ h1, h2, h3, h4 {
   .card-grid { grid-template-columns: repeat(2, 1fr); }
   .cat-grid { grid-template-columns: repeat(2, 1fr); }
   .feature-strip { grid-template-columns: 1fr; }
-  .gen-layout { grid-template-columns: 1fr; }
-  .preview-wrap { position: static; }
+  .gen-layout { grid-template-columns: minmax(0, 1fr); }
+  .preview-wrap { position: static; min-width: 0; }
   .nav-links { display: none; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-cols { grid-template-columns: repeat(2, 1fr); }
@@ -620,6 +622,23 @@ h1, h2, h3, h4 {
   .field-row { grid-template-columns: 1fr; }
   .footer-cols { grid-template-columns: 1fr; gap: 28px; }
   .paper-doc { width: 100%; padding: 8mm; }
+  .wrap { padding: 0 16px; }
+  .site-header .bar { gap: 10px; }
+  .brand { font-size: 15.5px; gap: 8px; }
+  .brand .mark { width: 30px; height: 30px; font-size: 14px; border-radius: 8px; }
+  .nav-cta { display: none; }
+  .hero { padding: 40px 0 36px; }
+  .hero-badges { gap: 8px; }
+  .badge { padding: 7px 11px; font-size: 12.5px; }
+  .section { padding: 44px 0; }
+  .section-head { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .callout { padding: 26px 22px; }
+  .tab-bar { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; margin-left: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; }
+  .tab-bar .tab-btn { flex-shrink: 0; }
+  .gen-head { padding: 20px 0 4px; }
+  .panel { padding: 20px; }
+  .preview-stage { padding: 14px; justify-content: flex-start; }
+  .paper-doc { transform-origin: top left; }
 }
 
 /* ---------- Formal letter documents ---------- */
