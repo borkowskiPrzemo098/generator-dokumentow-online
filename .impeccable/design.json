@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-26T12:00:00Z",
+  "title": "Design System: Generator dokumentów online",
+  "extensions": {
+    "colorMeta": {
+      "b-700": { "role": "primary", "displayName": "Ink Blue", "canonical": "#1a3b8f", "tonalRamp": ["#071334", "#0b1d4d", "#112a6b", "#1a3b8f", "#2450b3", "#c4d3f3", "#dfe7fa", "#eff4fd"] },
+      "b-950": { "role": "primary", "displayName": "Blue Black", "canonical": "#071334", "tonalRamp": ["#071334", "#0b1d4d", "#112a6b", "#1a3b8f", "#2450b3", "#c4d3f3", "#dfe7fa", "#eff4fd"] },
+      "b-900": { "role": "primary", "displayName": "Night Ink", "canonical": "#0b1d4d", "tonalRamp": ["#071334", "#0b1d4d", "#112a6b", "#1a3b8f", "#2450b3", "#c4d3f3", "#dfe7fa", "#eff4fd"] },
+      "b-800": { "role": "primary", "displayName": "Deep Ink", "canonical": "#112a6b", "tonalRamp": ["#071334", "#0b1d4d", "#112a6b", "#1a3b8f", "#2450b3", "#c4d3f3", "#dfe7fa", "#eff4fd"] },
+      "b-600": { "role": "primary", "displayName": "Bright Ink", "canonical": "#2450b3", "tonalRamp": ["#071334", "#0b1d4d", "#112a6b", "#1a3b8f", "#2450b3", "#c4d3f3", "#dfe7fa", "#eff4fd"] },
+      "b-200": { "role": "primary", "displayName": "Pale Ink", "canonical": "#c4d3f3", "tonalRamp": ["#071334", "#0b1d4d", "#112a6b", "#1a3b8f", "#2450b3", "#c4d3f3", "#dfe7fa", "#eff4fd"] },
+      "b-100": { "role": "primary", "displayName": "Ink Tint", "canonical": "#dfe7fa", "tonalRamp": ["#071334", "#0b1d4d", "#112a6b", "#1a3b8f", "#2450b3", "#c4d3f3", "#dfe7fa", "#eff4fd"] },
+      "b-50": { "role": "primary", "displayName": "Ink Wash", "canonical": "#eff4fd", "tonalRamp": ["#071334", "#0b1d4d", "#112a6b", "#1a3b8f", "#2450b3", "#c4d3f3", "#dfe7fa", "#eff4fd"] },
+      "sun": { "role": "secondary", "displayName": "Sun", "canonical": "#ffd24d", "tonalRamp": ["#3d2c00", "#6b4d00", "#9a7000", "#c99300", "#f2b90f", "#ffd24d", "#ffe38f", "#fff4d1"] },
+      "sun-600": { "role": "secondary", "displayName": "Marigold", "canonical": "#f2b90f", "tonalRamp": ["#3d2c00", "#6b4d00", "#9a7000", "#c99300", "#f2b90f", "#ffd24d", "#ffe38f", "#fff4d1"] },
+      "bg": { "role": "neutral", "displayName": "Paper", "canonical": "#ffffff" },
+      "mist": { "role": "neutral", "displayName": "Mist", "canonical": "#f1f5fc" },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#0b1530", "tonalRamp": ["#0b1530", "#2c3a5a", "#55627f", "#7d879e", "#b5c3de", "#d9e1f0", "#f1f5fc", "#ffffff"] },
+      "ink-2": { "role": "neutral", "displayName": "Ink Two", "canonical": "#2c3a5a" },
+      "ink-3": { "role": "neutral", "displayName": "Ink Three", "canonical": "#55627f" },
+      "line": { "role": "neutral", "displayName": "Line", "canonical": "#d9e1f0" },
+      "line-strong": { "role": "neutral", "displayName": "Line Strong", "canonical": "#b5c3de" },
+      "red": { "role": "tertiary", "displayName": "Alarm Red", "canonical": "#c0271d" },
+      "doc-ink": { "role": "neutral", "displayName": "Doc Ink (print only)", "canonical": "#14213d" },
+      "doc-900": { "role": "neutral", "displayName": "Doc Navy (print only)", "canonical": "#1c2b4a" },
+      "doc-700": { "role": "neutral", "displayName": "Doc Blue (print only)", "canonical": "#2d4373" },
+      "doc-soft": { "role": "neutral", "displayName": "Doc Soft (print only)", "canonical": "#4f5a70" },
+      "doc-faint": { "role": "neutral", "displayName": "Doc Faint (print only)", "canonical": "#7d869a" },
+      "doc-line": { "role": "neutral", "displayName": "Doc Line (print only)", "canonical": "#e1e5ee" },
+      "doc-line-2": { "role": "neutral", "displayName": "Doc Line Two (print only)", "canonical": "#cfd6e3" },
+      "doc-rule-2": { "role": "neutral", "displayName": "Doc Rule Two (print only)", "canonical": "#c3cde0" },
+      "doc-zebra": { "role": "neutral", "displayName": "Doc Zebra (print only)", "canonical": "#f3f5f9" },
+      "doc-gold": { "role": "neutral", "displayName": "Doc Gold (print only)", "canonical": "#a9822f" }
+    },
+    "typographyMeta": {
+      "display-hero": { "displayName": "Display, hero", "purpose": "Home H1 only." },
+      "headline-page": { "displayName": "Headline, page", "purpose": "Generator H1 and trust-band heading." },
+      "headline-section": { "displayName": "Headline, section", "purpose": "Home section heads." },
+      "title-block": { "displayName": "Title, block", "purpose": "Content titles under the generator with a 40px Ink Tint icon square; category panel titles." },
+      "title-form": { "displayName": "Title, form", "purpose": "Section headings inside the form card; trust items." },
+      "title-tile": { "displayName": "Title, tile", "purpose": "Large tile names (1.125rem phone, 1.25rem desktop)." },
+      "body-lead": { "displayName": "Body lead", "purpose": "Hero lead and generator page lead." },
+      "body": { "displayName": "Body", "purpose": "Base reading size, FAQ answers, steps, footer." },
+      "label": { "displayName": "Label", "purpose": "Field labels, buttons, chips, tabs, nav links." },
+      "help": { "displayName": "Help", "purpose": "Hints, breadcrumbs, desk privacy line, cookie text." },
+      "caption": { "displayName": "Caption", "purpose": "Count badges, result subtitles, mini-grid labels, legal line." },
+      "nav-label": { "displayName": "Nav label", "purpose": "Bottom-nav labels only; chrome floor." },
+      "doc-body": { "displayName": "Document body", "purpose": "Text inside printed A4 sheets only." },
+      "doc-heading": { "displayName": "Document heading (Fraunces)", "purpose": "Headings inside printed sheets only; never in chrome." }
+    },
+    "shadows": [
+      { "name": "tile", "value": "0 1px 2px rgba(11,29,77,0.06), 0 10px 28px -14px rgba(11,29,77,0.3)", "purpose": "Resting tiles and the form card." },
+      { "name": "tile-hover", "value": "0 2px 4px rgba(11,29,77,0.08), 0 18px 40px -16px rgba(11,29,77,0.42)", "purpose": "Linked tile hover, with a 3px lift." },
+      { "name": "float", "value": "0 20px 50px -18px rgba(7,19,52,0.5)", "purpose": "Desk, hero demo, hero search, dropdowns, cookie banner." },
+      { "name": "bar", "value": "0 -8px 24px -16px rgba(7,19,52,0.45)", "purpose": "Fixed bottom nav and mobile action bar." },
+      { "name": "doc-sheet", "value": "0 18px 44px -20px rgba(0,0,0,0.55)", "purpose": "The A4 sheet on the desk only; removed in print." },
+      { "name": "focus-ring", "value": "outline: 3px solid #071334; outline-offset: 2px; box-shadow: 0 0 0 5px #ffd24d", "purpose": "Double focus ring on every focusable element." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Tile lift, arrow nudges, desk slide, ink flash." },
+      { "name": "state-fast", "value": "150ms", "purpose": "Colour and border state changes." },
+      { "name": "lift", "value": "200ms", "purpose": "Tile lift and icon transitions." },
+      { "name": "desk-slide", "value": "320ms", "purpose": "Mobile full-screen desk sliding up." },
+      { "name": "ink-flash", "value": "700ms", "purpose": "Sun highlight fading from changed words in the hero demo." }
+    ],
+    "breakpoints": [
+      { "name": "xs", "value": "420px" },
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "desk", "value": "900px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Sun Button",
+      "kind": "button",
+      "refersTo": "button-sun",
+      "description": "The one primary action on a blue field.",
+      "html": "<button class=\"ds-btn-sun\">Zobacz wszystkie generatory<svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M12 5l7 7-7 7\"/></svg></button>",
+      "css": ".ds-btn-sun { display: inline-flex; align-items: center; gap: 10px; height: 56px; padding: 0 28px; border: 0; border-radius: 16px; background: #ffd24d; color: #071334; font-family: Figtree, system-ui, sans-serif; font-size: 1.125rem; font-weight: 800; cursor: pointer; transition: background-color 150ms; } .ds-btn-sun:hover { background: #f2b90f; } .ds-btn-sun:focus-visible { outline: 3px solid #071334; outline-offset: 2px; box-shadow: 0 0 0 5px #ffd24d; }"
+    },
+    {
+      "name": "Blue Button",
+      "kind": "button",
+      "refersTo": "button-blue",
+      "description": "Primary action on white, e.g. Pobierz PDF.",
+      "html": "<button class=\"ds-btn-blue\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/><path d=\"m7 10 5 5 5-5\"/><path d=\"M12 15V3\"/></svg>Pobierz PDF</button>",
+      "css": ".ds-btn-blue { display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 20px; border: 0; border-radius: 12px; background: #1a3b8f; color: #fff; font-family: Figtree, system-ui, sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background-color 150ms; } .ds-btn-blue:hover { background: #112a6b; } .ds-btn-blue:focus-visible { outline: 3px solid #071334; outline-offset: 2px; box-shadow: 0 0 0 5px #ffd24d; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action on white, e.g. Podgląd.",
+      "html": "<button class=\"ds-btn-outline\">Podgląd</button>",
+      "css": ".ds-btn-outline { height: 48px; padding: 0 20px; border: 2px solid #d9e1f0; border-radius: 12px; background: #fff; color: #0b1530; font-family: Figtree, system-ui, sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: border-color 150ms, color 150ms; } .ds-btn-outline:hover { border-color: #1a3b8f; color: #112a6b; } .ds-btn-outline:focus-visible { outline: 3px solid #071334; outline-offset: 2px; box-shadow: 0 0 0 5px #ffd24d; }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "56px form field with label.",
+      "html": "<label class=\"ds-field\"><span>Imię i nazwisko</span><input placeholder=\"np. Anna Kowalska\"></label>",
+      "css": ".ds-field { display: block; font-family: Figtree, system-ui, sans-serif; } .ds-field span { display: block; margin-bottom: 6px; font-size: 1rem; font-weight: 600; color: #2c3a5a; } .ds-field input { width: 100%; height: 56px; padding: 0 16px; border: 2px solid #d9e1f0; border-radius: 12px; background: #fff; font: inherit; font-size: 1.0625rem; font-weight: 500; color: #0b1530; transition: border-color 150ms, box-shadow 150ms; } .ds-field input::placeholder { color: #55627f; font-weight: 400; } .ds-field input:hover { border-color: #b5c3de; } .ds-field input:focus { outline: none; border-color: #1a3b8f; box-shadow: 0 0 0 4px #dfe7fa; }"
+    },
+    {
+      "name": "Generator Tile",
+      "kind": "card",
+      "refersTo": "tile",
+      "description": "Route into a generator: icon square plus full name.",
+      "html": "<a class=\"ds-tile\" href=\"#\"><span class=\"ds-sq\"><svg viewBox=\"0 0 24 24\" width=\"28\" height=\"28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z\"/><path d=\"M14 2v4a2 2 0 0 0 2 2h4\"/><path d=\"M10 13H8M16 17H8M16 13h-2\"/></svg></span><span class=\"ds-nm\">Podanie o urlop</span></a>",
+      "css": ".ds-tile { display: flex; align-items: center; gap: 16px; padding: 20px; background: #fff; border: 1px solid #d9e1f0; border-radius: 20px; box-shadow: 0 1px 2px rgba(11,29,77,0.06), 0 10px 28px -14px rgba(11,29,77,0.3); color: #0b1530; text-decoration: none; font-family: Figtree, system-ui, sans-serif; transition: transform 200ms cubic-bezier(0.16,1,0.3,1), box-shadow 200ms cubic-bezier(0.16,1,0.3,1), border-color 200ms; } .ds-tile:hover { transform: translateY(-3px); border-color: #c4d3f3; box-shadow: 0 2px 4px rgba(11,29,77,0.08), 0 18px 40px -16px rgba(11,29,77,0.42); } .ds-tile:focus-visible { outline: 3px solid #071334; outline-offset: 2px; box-shadow: 0 0 0 5px #ffd24d; } .ds-sq { width: 56px; height: 56px; border-radius: 16px; background: #1a3b8f; color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background-color 200ms; } .ds-tile:hover .ds-sq { background: #112a6b; } .ds-nm { font-size: 1.25rem; font-weight: 700; line-height: 1.25; }"
+    },
+    {
+      "name": "Category Tab",
+      "kind": "chip",
+      "refersTo": "category-tab",
+      "description": "Library filter pill with count badge.",
+      "html": "<div class=\"ds-tabs\"><button class=\"ds-tab\" aria-selected=\"true\">Praca <span class=\"ds-ct\">8</span></button><button class=\"ds-tab\" aria-selected=\"false\">Szkoła <span class=\"ds-ct\">4</span></button></div>",
+      "css": ".ds-tabs { display: flex; gap: 8px; } .ds-tab { display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 8px 0 16px; border-radius: 999px; border: 2px solid #d9e1f0; background: #fff; color: #0b1530; font-family: Figtree, system-ui, sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: border-color 150ms, background-color 150ms, color 150ms; } .ds-tab:hover { border-color: #1a3b8f; } .ds-tab[aria-selected=\"true\"] { background: #1a3b8f; border-color: #1a3b8f; color: #fff; } .ds-ct { min-width: 30px; height: 30px; padding: 0 9px; border-radius: 999px; background: #dfe7fa; color: #112a6b; font-size: 0.875rem; display: inline-flex; align-items: center; justify-content: center; } .ds-tab[aria-selected=\"true\"] .ds-ct { background: rgba(255,255,255,0.18); color: #fff; } .ds-tab:focus-visible { outline: 3px solid #071334; outline-offset: 2px; box-shadow: 0 0 0 5px #ffd24d; }"
+    },
+    {
+      "name": "Header Nav",
+      "kind": "nav",
+      "refersTo": "nav-header",
+      "description": "White header with logo and pill links.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-logo\"><span class=\"ds-mark\">G</span>Generator <b>dokumentów</b></span><a href=\"#\">Generatory</a><a href=\"#\">Kategorie</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 4px; height: 72px; padding: 0 16px; background: #fff; border-bottom: 1px solid #d9e1f0; font-family: Figtree, system-ui, sans-serif; } .ds-logo { display: flex; align-items: center; gap: 10px; margin-right: auto; font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; color: #0b1530; } .ds-logo b { color: #1a3b8f; font-weight: 800; } .ds-mark { width: 40px; height: 40px; border-radius: 12px; background: #1a3b8f; color: #fff; display: flex; align-items: center; justify-content: center; } .ds-nav a { padding: 10px 16px; border-radius: 12px; font-size: 1rem; font-weight: 600; color: #2c3a5a; text-decoration: none; transition: background-color 150ms, color 150ms; } .ds-nav a:hover { background: #eff4fd; color: #112a6b; } .ds-nav a:focus-visible { outline: 3px solid #071334; outline-offset: 2px; box-shadow: 0 0 0 5px #ffd24d; }"
+    },
+    {
+      "name": "The Desk",
+      "kind": "custom",
+      "refersTo": "desk",
+      "description": "Signature: a white A4 sheet on an ink-blue desk with zoom controls and the download action.",
+      "html": "<div class=\"ds-desk\"><div class=\"ds-desk-bar\"><b>Podgląd</b><button aria-label=\"Pomniejsz\">&#8722;</button><button aria-label=\"Powiększ\">+</button></div><div class=\"ds-stage\"><div class=\"ds-sheet\"><p class=\"ds-s-top\"><span>Anna Kowalska</span><span>Kraków, 26.09.2026</span></p><p class=\"ds-s-title\">WNIOSEK O URLOP</p><p class=\"ds-s-body\">Zwracam się z prośbą o udzielenie urlopu wypoczynkowego w dniach 5-9 października 2026.</p></div></div><button class=\"ds-desk-dl\">Pobierz PDF</button></div>",
+      "css": ".ds-desk { width: 340px; display: flex; flex-direction: column; gap: 14px; padding: 20px; border-radius: 24px; background: #1a3b8f; color: #fff; box-shadow: 0 20px 50px -18px rgba(7,19,52,0.5); font-family: Figtree, system-ui, sans-serif; } .ds-desk-bar { display: flex; align-items: center; gap: 8px; } .ds-desk-bar b { flex: 1; font-size: 1.0625rem; font-weight: 800; } .ds-desk-bar button { width: 44px; height: 44px; border: 0; border-radius: 12px; background: rgba(255,255,255,0.12); color: #fff; font-size: 1.25rem; cursor: pointer; transition: background-color 150ms; } .ds-desk-bar button:hover { background: rgba(255,255,255,0.22); } .ds-stage { background: #112a6b; border-radius: 16px; padding: 16px; } .ds-sheet { aspect-ratio: 210 / 297; background: #fff; color: #14213d; padding: 18px; font-size: 9px; line-height: 1.5; box-shadow: 0 18px 44px -20px rgba(0,0,0,0.55); } .ds-s-top { display: flex; justify-content: space-between; color: #4f5a70; margin: 0; } .ds-s-title { margin: 16px 0 8px; text-align: center; font-weight: 800; letter-spacing: 0.04em; } .ds-s-body { margin: 0; color: #4f5a70; } .ds-desk-dl { height: 48px; border: 0; border-radius: 12px; background: #fff; color: #112a6b; font: inherit; font-weight: 700; cursor: pointer; } .ds-desk-dl:focus-visible, .ds-desk-bar button:focus-visible { outline: 3px solid #071334; outline-offset: 2px; box-shadow: 0 0 0 5px #ffd24d; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Ink-Blue Desk",
+    "overview": "The site is a sibling of Kalkulatory Online: the same app-like grammar of big white tiles, solid colour fields and Figtree at extreme weights, re-cut in ink blue, the colour of a ballpoint pen and an office stamp. Every route into a generator is a tappable tile with a filled icon square and the full document name. Every generator answers with the same signature object: a white A4 sheet lying on an ink-blue desk, updating as the user types, ready to print.\n\nPages alternate full-bleed bands: ink-blue fields (hero, trust band, footer, the desk) against white and Mist sections that carry tiles, forms and reading content. One blue family does the structural work; sun yellow appears only for the one action on blue and for emphasis on blue fields. The printed documents themselves live in a second, quieter world: a neutral navy \"doc\" palette and, for document headings only, the Fraunces serif, so the sheet reads as a real letter or certificate rather than a piece of the website.\n\nThe audience is the same as the sibling's: people who want big targets, icons, strong colour, large type and few words. Pale, hairline, text-heavy chrome is off the table.",
+    "keyCharacteristics": [
+      "One ink-blue family from near-black `b-950` to wash `b-50`, plus sun yellow as the single warm accent.",
+      "Big white tiles (20px radius, blue-tinted soft shadow, 3px lift on hover) with a 56px ink-blue icon square and a bold name.",
+      "The desk: an A4 sheet at true millimetre size, scaled to fit a Deep Ink stage inside an Ink Blue panel.",
+      "Hero watermark glyphs (§ ¶ @ A4) at 7% white, the document-world counterpart of the sibling's giant math symbols.",
+      "Site chrome is Figtree only; the serif belongs to printed documents.",
+      "Every interactive target is at least 44px; fields are 56px."
+    ],
+    "rules": [
+      { "name": "The One Family Rule", "body": "Every chrome surface, border and tint comes from the ink-blue ramp or its blue-tinted neutrals. No greens, purples, greys or second brand hue in the site chrome.", "section": "colors" },
+      { "name": "The Sun On Blue Rule", "body": "Sun appears on or beside blue fields, for the one primary action or the one emphasised phrase. Text on Sun is always Blue Black. On white surfaces the primary action is Ink Blue (for example \"Pobierz PDF\"), not Sun.", "section": "colors" },
+      { "name": "The Full Field Rule", "body": "Hero, trust band, footer and the desk are solid blue fields edge to edge (or full panels), never tinted outlines or pale washes.", "section": "colors" },
+      { "name": "The Two Worlds Rule", "body": "The `doc-*` palette paints printed sheets only and never appears in chrome; the chrome `b-*` ramp never appears inside a printed document. User-chosen accents (business card, invitation swatches) live inside the sheet, not on the site.", "section": "colors" },
+      { "name": "The Serif Stays On Paper Rule", "body": "Fraunces is allowed only inside printed document templates, and only for their headings. The site chrome never uses a serif.", "section": "typography" },
+      { "name": "The No Kicker Rule", "body": "Headings in the site chrome stand alone. No eyebrow, kicker, small-caps label or uppercase tag above any heading.", "section": "typography" },
+      { "name": "The 13px Floor Rule", "body": "Nothing in the chrome renders below 0.8125rem, and that size is reserved for bottom-nav labels. Document text follows print sizes and is exempt.", "section": "typography" },
+      { "name": "The Lift On Touch Rule", "body": "Linked tiles rise 3px and deepen their shadow on hover (200ms, ease-out-expo `cubic-bezier(0.16,1,0.3,1)`). Static containers do not move. Reduced motion removes the lift.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do route to every generator through a tile with a filled icon square and the full document name.",
+      "Do show every generator's output as a white A4 sheet on the Ink Blue desk, live-updating, sticky on desktop and full-screen from the action bar on phones.",
+      "Do alternate full blue fields with white and Mist sections so each band reads at a glance.",
+      "Do use Sun only for the one action or emphasised phrase on blue, with Blue Black text on it.",
+      "Do keep the hero watermark glyphs (§ ¶ @ A4) as large 800-weight characters at 7% white on the hero field, decorative and aria-hidden.",
+      "Do paint printed sheets with the `doc-*` palette and, if a heading needs gravity, Fraunces; keep everything else in Figtree.",
+      "Do keep every tappable target at least 44px and every chrome string at 1rem or more (13px only for bottom-nav labels).",
+      "Do tint every chrome shadow with the ink family and keep it soft and diffuse."
+    ],
+    "donts": [
+      "Don't return to pale, hairline, text-heavy chrome with small labels and text-only lists.",
+      "Don't put an eyebrow, kicker or uppercase label above any chrome heading.",
+      "Don't use a serif anywhere in the site chrome.",
+      "Don't use emoji or text glyphs as icons; every icon is an inline lucide-style SVG from the catalogue, and document/category icons always sit in a filled rounded square. (The hero watermark glyphs are texture, not icons.)",
+      "Don't introduce a second chrome hue family or use Sun as a large background on white.",
+      "Don't let `b-*` colours leak into printed documents or `doc-*` colours into the chrome.",
+      "Don't use hard offset shadows or black shadows in the chrome.",
+      "Don't add descriptions or blurbs to generator tiles; icon plus full name only."
+    ]
+  }
+}
