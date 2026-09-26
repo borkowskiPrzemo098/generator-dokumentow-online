@@ -1,0 +1,66 @@
+/* Arkusze A4 — wygląd wydruku. Osobny świat „doc” (DESIGN.md: Two Worlds): wymiary w px/mm to specyfikacja druku. */
+.paper-doc {
+  background: #fff; width: 210mm; min-height: 297mm; padding: 18mm;
+  color: var(--doc-ink); font-family: var(--font-sans); font-size: 13px; line-height: 1.5;
+  box-shadow: var(--doc-shadow);
+  font-variant-numeric: normal;
+}
+
+.letter-doc { font-size: 13px; line-height: 1.6; color: var(--doc-ink); }
+.letter-doc .sender { white-space: pre-line; font-size: 12.5px; }
+.letter-doc .date { text-align: right; margin: 28px 0; font-size: 12.5px; }
+.letter-doc .recipient { white-space: pre-line; margin-bottom: 30px; font-size: 12.5px; }
+.letter-doc .subject { text-align: center; font-weight: 700; margin: 0 0 22px; font-size: 13.5px; }
+.letter-doc .body-text { white-space: pre-line; text-align: justify; margin-bottom: 40px; }
+.letter-doc .sign-block { margin-left: auto; width: 220px; text-align: center; }
+.letter-doc .sign-line { border-top: 1px solid var(--doc-ink); margin-top: 46px; padding-top: 6px; font-size: 11.5px; color: var(--doc-faint); }
+
+.card-doc { --biz-accent: #16342c; width: 210mm; height: 297mm; min-height: 0; padding: 8mm 10mm; display: grid; grid-template-columns: 90mm 90mm; grid-auto-rows: 50mm; gap: 5mm 8mm; justify-content: center; align-content: center; }
+.biz-card { width: 90mm; height: 50mm; border-radius: 8px; position: relative; overflow: hidden; box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.25); flex-shrink: 0; }
+.biz-card.front { background: var(--biz-accent, var(--doc-900)); color: #fff; padding: 8mm; display: flex; flex-direction: column; justify-content: space-between; }
+.biz-card.front .bc-name { font-family: var(--font-serif); font-size: 16px; }
+.biz-card.front .bc-role { font-size: 10px; color: rgba(255, 255, 255, 0.78); margin-top: 2px; letter-spacing: 0.03em; text-transform: uppercase; }
+.biz-card.front .bc-mark { width: 26px; height: 26px; border-radius: 7px; background: rgba(255, 255, 255, 0.14); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 13px; }
+.biz-card.front .bc-contacts { font-size: 9px; line-height: 1.7; color: rgba(255, 255, 255, 0.88); }
+.biz-card.back { background: #fdfcf9; border: 1px solid var(--doc-line); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 6px; }
+.biz-card.back .bc-mark2 { width: 34px; height: 34px; border-radius: 9px; background: var(--biz-accent, var(--doc-900)); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 15px; }
+.biz-card.back .bc-company { font-family: var(--font-serif); font-size: 13px; color: var(--biz-accent, var(--doc-ink)); }
+.biz-card.back .bc-tag { font-size: 8.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--doc-faint); }
+
+.cert-doc { width: 297mm; height: 210mm; padding: 16mm; position: relative; display: flex; align-items: stretch; background: var(--doc-cream); }
+.cert-frame { flex: 1; min-width: 0; border: 2px solid var(--doc-gold); border-radius: 4px; padding: 14mm 18mm; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; }
+.cert-frame::before { content: ""; position: absolute; inset: 8px; border: 1px solid var(--doc-rule-2); border-radius: 2px; pointer-events: none; }
+.cert-eyebrow { letter-spacing: 0.25em; text-transform: uppercase; font-size: 11px; color: var(--doc-700); font-weight: 700; margin-top: 10mm; }
+.cert-title { font-family: var(--font-serif); font-size: 34px; color: var(--doc-ink); margin: 10px 0 18px; }
+.cert-sub { font-size: 13px; color: var(--doc-soft); }
+.cert-name { font-family: var(--font-serif); font-size: 30px; color: var(--doc-gold); margin: 14px 0; border-bottom: 1.5px solid var(--doc-gold); padding-bottom: 10px; min-width: 60%; }
+.cert-reason { max-width: 500px; font-size: 13px; color: var(--doc-soft); line-height: 1.6; margin-top: 6px; }
+.cert-footer { display: flex; justify-content: space-between; width: 100%; margin-top: auto; padding-top: 20mm; }
+.cert-sign { text-align: center; font-size: 11.5px; }
+.cert-sign .ln { border-top: 1px solid var(--doc-faint); padding-top: 6px; margin-top: 34px; min-width: 140px; }
+
+.table-doc { font-size: 12.5px; color: var(--doc-ink); }
+.table-doc .doc-title { font-family: var(--font-serif); font-size: 24px; color: var(--doc-ink); margin-bottom: 4px; }
+.table-doc .doc-sub { color: var(--doc-soft); font-size: 12.5px; margin-bottom: 20px; }
+.table-doc .meta-row { display: flex; gap: 28px; margin-bottom: 18px; font-size: 12px; flex-wrap: wrap; }
+.table-doc .meta-row b { color: var(--doc-900); }
+.table-doc table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.table-doc th { background: var(--doc-900); color: #fff; text-align: left; padding: 8px 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; }
+.table-doc td { padding: 8px 10px; border-bottom: 1px solid var(--doc-line); vertical-align: top; }
+.table-doc tr:nth-child(even) td { background: var(--doc-zebra); }
+.table-doc .check-list { list-style: none; padding: 0; margin: 0; }
+.table-doc .check-list li { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--doc-line); font-size: 13px; }
+.table-doc .check-list li .box { width: 15px; height: 15px; border: 1.5px solid var(--doc-700); border-radius: 4px; flex-shrink: 0; }
+
+.invite-doc { display: flex; align-items: center; justify-content: center; width: 210mm; min-height: 297mm; }
+.invite-card { width: 130mm; min-height: 180mm; border-radius: 14px; padding: 16mm 12mm; display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: center; gap: 14px; box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.35); }
+.invite-card .ic-eyebrow { letter-spacing: 0.18em; text-transform: uppercase; font-size: 10.5px; font-weight: 700; }
+.invite-card .ic-title { font-family: var(--font-serif); font-size: 28px; line-height: 1.15; }
+.invite-card .ic-line { width: 40px; height: 2px; }
+.invite-card .ic-body { font-size: 13px; line-height: 1.7; white-space: pre-line; }
+.invite-card .ic-details { font-size: 12px; margin-top: 6px; line-height: 1.8; }
+
+.labels-doc { width: 210mm; min-height: 297mm; padding: 10mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; align-content: start; }
+.label-cell { border: 1px dashed var(--doc-line-2); border-radius: 6px; padding: 8mm 6mm; font-size: 11px; line-height: 1.5; }
+.label-cell b { display: block; font-size: 12.5px; color: var(--doc-ink); margin-bottom: 2px; }
+

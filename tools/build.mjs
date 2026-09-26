@@ -140,7 +140,8 @@ function head({ title, desc, url, base, fonts, extra = '' }) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?${fonts}&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="${base}assets/css/style.css">${extra}`;
+<link rel="stylesheet" href="${base}assets/css/style.css">${fonts === FONTS_DOCS ? `
+<link rel="stylesheet" href="${base}assets/css/documents.css">` : ''}${extra}`;
 }
 
 const logoInner = `<span class="logo-mark">${icon('file-text')}</span><span class="logo-text">Generator <span>dokumentów</span></span>`;

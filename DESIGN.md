@@ -30,6 +30,7 @@ colors:
   doc-rule-2: "#c3cde0"
   doc-zebra: "#f3f5f9"
   doc-gold: "#a9822f"
+  doc-cream: "#fffdf8"
 typography:
   display-hero:
     fontFamily: "Figtree, system-ui, -apple-system, Segoe UI, sans-serif"
@@ -71,6 +72,11 @@ typography:
     fontSize: "1.25rem"
     fontWeight: 400
     lineHeight: 1.4
+  body-intro:
+    fontFamily: "Figtree, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "1.125rem"
+    fontWeight: 400
+    lineHeight: 1.7
   body:
     fontFamily: "Figtree, system-ui, -apple-system, Segoe UI, sans-serif"
     fontSize: "1.0625rem"

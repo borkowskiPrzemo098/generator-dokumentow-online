@@ -8,6 +8,357 @@
         "value": "fraunces",
         "createdAt": "2026-09-21T16:25:31.542Z",
         "reason": "Intentional: matches typography of the sister site Kalkulatory Online (Fraunces + Inter) for brand consistency across the user's project family"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "11.5px",
+        "files": [
+          "assets/css/documents.css"
+        ],
+        "createdAt": "2026-09-26T18:00:25.115Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "10px",
+        "files": [
+          "assets/css/documents.css"
+        ],
+        "createdAt": "2026-09-26T18:00:25.253Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "9px",
+        "files": [
+          "assets/css/documents.css"
+        ],
+        "createdAt": "2026-09-26T18:00:25.385Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "8.5px",
+        "files": [
+          "assets/css/documents.css"
+        ],
+        "createdAt": "2026-09-26T18:00:25.534Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "11px",
+        "files": [
+          "assets/css/documents.css"
+        ],
+        "createdAt": "2026-09-26T18:00:25.683Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "34px",
+        "files": [
+          "assets/css/documents.css"
+        ],
+        "createdAt": "2026-09-26T18:00:25.802Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "12px",
+        "files": [
+          "assets/css/documents.css"
+        ],
+        "createdAt": "2026-09-26T18:00:25.949Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "10.5px",
+        "files": [
+          "assets/css/documents.css"
+        ],
+        "createdAt": "2026-09-26T18:00:26.087Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "8px",
+        "files": [
+          "assets/css/documents.css"
+        ],
+        "createdAt": "2026-09-26T18:00:26.235Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "7px",
+        "files": [
+          "assets/css/documents.css"
+        ],
+        "createdAt": "2026-09-26T18:00:26.383Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "9px",
+        "files": [
+          "assets/css/documents.css"
+        ],
+        "createdAt": "2026-09-26T18:00:26.540Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "4px",
+        "files": [
+          "assets/css/documents.css"
+        ],
+        "createdAt": "2026-09-26T18:00:26.681Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "2px",
+        "files": [
+          "assets/css/documents.css"
+        ],
+        "createdAt": "2026-09-26T18:00:26.792Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(0, 0, 0, 0.25)",
+        "files": [
+          "assets/css/documents.css"
+        ],
+        "createdAt": "2026-09-26T18:00:27.147Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(0, 0, 0, 0.35)",
+        "files": [
+          "assets/css/documents.css"
+        ],
+        "createdAt": "2026-09-26T18:00:27.294Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "26px",
+        "files": [
+          "generatory/cv.html"
+        ],
+        "createdAt": "2026-09-26T18:00:27.423Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "11px",
+        "files": [
+          "generatory/cv.html"
+        ],
+        "createdAt": "2026-09-26T18:00:27.575Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "11.5px",
+        "files": [
+          "generatory/cv.html"
+        ],
+        "createdAt": "2026-09-26T18:00:27.717Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "27px",
+        "files": [
+          "generatory/cv.html"
+        ],
+        "createdAt": "2026-09-26T18:00:27.861Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "12px",
+        "files": [
+          "generatory/cv.html"
+        ],
+        "createdAt": "2026-09-26T18:00:27.997Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "12.3px",
+        "files": [
+          "generatory/cv.html"
+        ],
+        "createdAt": "2026-09-26T18:00:28.112Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#4a5750",
+        "files": [
+          "generatory/cv.html"
+        ],
+        "createdAt": "2026-09-26T18:00:28.215Z",
+        "reason": "agent: printed A4 template spec in px/mm, DESIGN.md Two Worlds rule (doc world separate from chrome ramp)"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#16342c",
+        "files": [
+          "generatory/cv.html"
+        ],
+        "createdAt": "2026-09-26T18:00:28.344Z",
+        "reason": "agent: document colour-picker swatches the user requested (theme choice for CV/business card), not site chrome"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#16342c",
+        "files": [
+          "generatory/wizytowka.html"
+        ],
+        "createdAt": "2026-09-26T18:00:28.452Z",
+        "reason": "agent: document colour-picker swatches the user requested (theme choice for CV/business card), not site chrome"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#1f3a5f",
+        "files": [
+          "generatory/cv.html"
+        ],
+        "createdAt": "2026-09-26T18:00:28.566Z",
+        "reason": "agent: document colour-picker swatches the user requested (theme choice for CV/business card), not site chrome"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#1f3a5f",
+        "files": [
+          "generatory/wizytowka.html"
+        ],
+        "createdAt": "2026-09-26T18:00:28.688Z",
+        "reason": "agent: document colour-picker swatches the user requested (theme choice for CV/business card), not site chrome"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#5c2a3a",
+        "files": [
+          "generatory/cv.html"
+        ],
+        "createdAt": "2026-09-26T18:00:28.814Z",
+        "reason": "agent: document colour-picker swatches the user requested (theme choice for CV/business card), not site chrome"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#5c2a3a",
+        "files": [
+          "generatory/wizytowka.html"
+        ],
+        "createdAt": "2026-09-26T18:00:28.941Z",
+        "reason": "agent: document colour-picker swatches the user requested (theme choice for CV/business card), not site chrome"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#7a5c1f",
+        "files": [
+          "generatory/cv.html"
+        ],
+        "createdAt": "2026-09-26T18:00:29.055Z",
+        "reason": "agent: document colour-picker swatches the user requested (theme choice for CV/business card), not site chrome"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#7a5c1f",
+        "files": [
+          "generatory/wizytowka.html"
+        ],
+        "createdAt": "2026-09-26T18:00:29.165Z",
+        "reason": "agent: document colour-picker swatches the user requested (theme choice for CV/business card), not site chrome"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#3a3a3a",
+        "files": [
+          "generatory/cv.html"
+        ],
+        "createdAt": "2026-09-26T18:00:29.272Z",
+        "reason": "agent: document colour-picker swatches the user requested (theme choice for CV/business card), not site chrome"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#3a3a3a",
+        "files": [
+          "generatory/wizytowka.html"
+        ],
+        "createdAt": "2026-09-26T18:00:29.392Z",
+        "reason": "agent: document colour-picker swatches the user requested (theme choice for CV/business card), not site chrome"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#2f5c4a",
+        "files": [
+          "generatory/cv.html"
+        ],
+        "createdAt": "2026-09-26T18:00:29.496Z",
+        "reason": "agent: document colour-picker swatches the user requested (theme choice for CV/business card), not site chrome"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#2f5c4a",
+        "files": [
+          "generatory/wizytowka.html"
+        ],
+        "createdAt": "2026-09-26T18:00:29.623Z",
+        "reason": "agent: document colour-picker swatches the user requested (theme choice for CV/business card), not site chrome"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "16rem",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-26T18:00:29.743Z",
+        "reason": "agent: hero watermark glyphs, deliberate device recorded in DESIGN.md (sibling's giant math symbols)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "9rem",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-26T18:00:29.864Z",
+        "reason": "agent: hero watermark glyphs, deliberate device recorded in DESIGN.md (sibling's giant math symbols)"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(0, 0, 0, 0.18)",
+        "files": [
+          "assets/css/style.css"
+        ],
+        "createdAt": "2026-09-26T18:00:29.980Z",
+        "reason": "agent: hero demo paper sheet is a document depiction (doc world); neutral ring on arbitrary swatch colours"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(0, 0, 0, 0.12)",
+        "files": [
+          "assets/css/style.css"
+        ],
+        "createdAt": "2026-09-26T18:00:30.083Z",
+        "reason": "agent: hero demo paper sheet is a document depiction (doc world); neutral ring on arbitrary swatch colours"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "3px",
+        "files": [
+          "assets/css/style.css"
+        ],
+        "createdAt": "2026-09-26T18:00:30.232Z",
+        "reason": "agent: inline text highlight (mark) in the demo document depiction"
       }
     ]
   }
