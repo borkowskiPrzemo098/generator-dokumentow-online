@@ -373,8 +373,8 @@ The hero demo is a miniature of the same object: a working two-field generator w
 ### Document templates
 Letters (right-aligned date, centred bold subject, justified body, signature line), table documents (Fraunces title, Doc Navy header row in 11px uppercase, zebra rows), certificates (landscape, cream paper, double gold/rule frame, Fraunces title and gold name), invitations (130 x 180 mm card centred on the sheet, accent from swatches), address labels (3-column dashed cells) and business cards. **Business cards are 90 x 50 mm, printed as five front/back pairs on one A4 cutting sheet** (two columns, 5 mm row gap, 8 mm column gap), accent chosen from swatches.
 
-### Known open item
-Landscape table documents (grafik pracy, plan lekcji) render small in the desk at default fit because the 297 mm sheet is scaled to the stage width; users enlarge them with the plus control. This is a current limitation, not a rule.
+### Desk controls
+Minus and plus step the scale by 10% (20–150%). The third control (maximize icon, desktop only) expands the desk to a full-screen panel over a 60% Blue Black scrim, refitting the sheet to the wider stage (up to 100%, natural size); the same control (minimize icon) or Esc returns to the side panel. On phones the desk is already full screen, so the control is hidden. Landscape sheets (grafik pracy, plan lekcji) are small in the side panel and become readable in full screen.
 
 ## Do's and Don'ts
 

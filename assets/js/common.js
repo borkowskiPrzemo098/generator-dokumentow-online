@@ -49,15 +49,31 @@ function initZoom(paperId) {
 
   document.querySelectorAll('[data-zoom]').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var dir = btn.getAttribute('data-zoom');
-      if (dir === 'fit') { gdPaper.manual = false; }
-      else {
-        gdPaper.manual = true;
-        gdPaper.scale = Math.min(1.2, Math.max(0.2, gdPaper.scale + parseInt(dir, 10) * 0.1));
-      }
+      gdPaper.manual = true;
+      gdPaper.scale = Math.min(1.5, Math.max(0.2, gdPaper.scale + parseInt(btn.getAttribute('data-zoom'), 10) * 0.1));
       gdFitPaper();
     });
   });
+
+  // Powiększenie podglądu na cały ekran (komputer); ponowne kliknięcie lub Esc wraca do panelu.
+  var desk = document.getElementById('desk');
+  var expand = document.querySelector('[data-expand]');
+  if (desk && expand) {
+    var setFull = function (on) {
+      desk.classList.toggle('is-full', on);
+      document.body.classList.toggle('desk-full', on);
+      expand.setAttribute('aria-pressed', on ? 'true' : 'false');
+      expand.setAttribute('aria-label', on ? 'Zmniejsz podgląd' : 'Powiększ podgląd na cały ekran');
+      gdPaper.manual = false;
+      gdPaper.stage.scrollTop = 0;
+      gdPaper.stage.scrollLeft = 0;
+      requestAnimationFrame(gdFitPaper);
+    };
+    expand.addEventListener('click', function () { setFull(!desk.classList.contains('is-full')); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && desk.classList.contains('is-full')) setFull(false);
+    });
+  }
 
   if ('ResizeObserver' in window) {
     new ResizeObserver(gdFitPaper).observe(paper);

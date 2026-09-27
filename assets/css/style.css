@@ -555,6 +555,15 @@ body.has-bottom-nav .cookie, body.has-mobile-bar .cookie { bottom: calc(80px + e
 .desk-btn:hover { background: rgba(255, 255, 255, 0.22); }
 .desk-btn .ico { width: 20px; height: 20px; stroke-width: 2.25; }
 .desk-close { display: none; }
+.desk-expand .ic-min, .desk.is-full .desk-expand .ic-max { display: none; }
+.desk.is-full .desk-expand .ic-min { display: contents; }
+@media (max-width: 899px) { .desk-expand { display: none; } }
+@media (min-width: 900px) {
+  .desk.is-full { position: fixed; inset: 16px; z-index: 90; max-width: 72rem; margin: 0 auto; }
+  .desk.is-full .desk-stage { flex: 1; min-height: 0; max-height: none; }
+  body.desk-full { overflow: hidden; }
+  body.desk-full::before { content: ""; position: fixed; inset: 0; z-index: 89; background: rgba(7, 19, 52, 0.6); }
+}
 .desk-stage {
   position: relative; background: var(--b-800); border-radius: 16px; padding: 16px;
   overflow: auto; min-height: 320px;

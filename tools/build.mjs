@@ -259,7 +259,7 @@ ${d.form}
 <div class="desk-bar"><h2>Podgląd dokumentu</h2>
 <button type="button" class="desk-btn" data-zoom="-1" aria-label="Pomniejsz podgląd">${icon('minus')}</button>
 <button type="button" class="desk-btn" data-zoom="1" aria-label="Powiększ podgląd">${icon('plus')}</button>
-<button type="button" class="desk-btn" data-zoom="fit" aria-label="Dopasuj do szerokości">${icon('maximize')}</button>
+<button type="button" class="desk-btn desk-expand" data-expand aria-label="Powiększ podgląd na cały ekran" aria-pressed="false"><span class="ic-max">${icon('maximize')}</span><span class="ic-min">${icon('minimize')}</span></button>
 <button type="button" class="desk-btn desk-close" data-preview-close aria-label="Zamknij podgląd">${icon('x')}</button>
 </div>
 <div class="desk-stage"><div class="paper-fit">
