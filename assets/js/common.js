@@ -27,10 +27,13 @@ function gdFitPaper() {
   var avail = p.stage.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
   var w = p.el.offsetWidth, h = p.el.offsetHeight;
   if (!w || avail <= 0) return;
-  if (!p.manual) p.scale = Math.min(1, avail / w);
-  p.el.style.transform = 'scale(' + p.scale + ')';
-  p.fit.style.width = Math.round(w * p.scale) + 'px';
-  p.fit.style.height = Math.round(h * p.scale) + 'px';
+  if (!p.manual) p.scale = Math.min(1, Math.floor(avail) / w);
+  // Zapis tylko przy realnej zmianie — każdy zbędny zapis może przestawić pasek przewijania.
+  var t = 'scale(' + p.scale.toFixed(4) + ')';
+  var fw = Math.floor(w * p.scale) + 'px', fh = Math.floor(h * p.scale) + 'px';
+  if (p.el.style.transform !== t) p.el.style.transform = t;
+  if (p.fit.style.width !== fw) p.fit.style.width = fw;
+  if (p.fit.style.height !== fh) p.fit.style.height = fh;
 }
 
 function initZoom(paperId) {
@@ -65,9 +68,9 @@ function initZoom(paperId) {
       expand.setAttribute('aria-pressed', on ? 'true' : 'false');
       expand.setAttribute('aria-label', on ? 'Zmniejsz podgląd' : 'Powiększ podgląd na cały ekran');
       gdPaper.manual = false;
+      gdFitPaper();
       gdPaper.stage.scrollTop = 0;
       gdPaper.stage.scrollLeft = 0;
-      requestAnimationFrame(gdFitPaper);
     };
     expand.addEventListener('click', function () { setFull(!desk.classList.contains('is-full')); });
     document.addEventListener('keydown', function (e) {
@@ -75,12 +78,14 @@ function initZoom(paperId) {
     });
   }
 
-  if ('ResizeObserver' in window) {
-    new ResizeObserver(gdFitPaper).observe(paper);
-    new ResizeObserver(gdFitPaper).observe(gdPaper.stage);
-  } else {
-    window.addEventListener('resize', gdFitPaper);
-  }
+  // Obserwujemy tylko arkusz (rośnie z treścią; transform nie zmienia jego rozmiaru), a nie okienko,
+  // bo zmiana skali przestawia pasek przewijania okienka i dawała pętlę przeliczeń („skakanie”).
+  if ('ResizeObserver' in window) new ResizeObserver(gdFitPaper).observe(paper);
+  // Skrypt strony renderuje na body (input/click); document słucha później, więc liczymy po renderze.
+  document.addEventListener('input', function () { setTimeout(gdFitPaper, 0); });
+  document.addEventListener('click', function () { setTimeout(gdFitPaper, 0); });
+  var rt;
+  window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(gdFitPaper, 60); });
   gdFitPaper();
 }
 
@@ -148,7 +153,7 @@ function gdInitMobilePreview() {
     lastFocus = document.activeElement;
     desk.classList.add('is-open');
     document.body.classList.add('desk-open');
-    requestAnimationFrame(gdFitPaper);
+    gdFitPaper();
     var c = desk.querySelector('.desk-close');
     if (c) setTimeout(function () { c.focus(); }, 50);
   }

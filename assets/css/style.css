@@ -566,7 +566,7 @@ body.has-bottom-nav .cookie, body.has-mobile-bar .cookie { bottom: calc(80px + e
 }
 .desk-stage {
   position: relative; background: var(--b-800); border-radius: 16px; padding: 16px;
-  overflow: auto; min-height: 320px;
+  overflow: auto; min-height: 320px; scrollbar-gutter: stable;
 }
 @media (min-width: 900px) { .desk-stage { max-height: calc(100vh - 88px - 220px); min-height: 360px; } }
 .paper-fit { position: relative; margin: 0 auto; }
